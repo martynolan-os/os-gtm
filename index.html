@@ -77,6 +77,11 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 .sub-body { display: none; padding: 14px 18px 18px; border-top: 1px solid var(--border); }
 .sub-section.open .sub-body { display: block; }
 
+/* Win items: nested sub-sections that reset indentation to look like top-level cards */
+.win-items { display: flex; flex-direction: column; gap: 8px; padding: 0; }
+.win-items .sub-section { margin-bottom: 0; }
+.win-items .sub-body { padding: 14px 18px 18px; }
+
 /* Body text */
 .body-text { font-size: 12px; color: var(--body-text); line-height: 1.8; margin-bottom: 12px; }
 .sub-heading { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin: 18px 0 8px; }
@@ -699,49 +704,51 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
     <div class="sub-section open">
       <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">How to Win</span><span class="sub-arrow">+</span></button>
       <div class="sub-body">
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Win on the lock and key moment.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">Name, positioning, and visual language so aligned that the meaning is immediate on first encounter.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Let the roster do the credibility work.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">The proof earns the room before a word is spoken.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Lead with aspiration, not capability.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">Build your world lands immediately. Fan CRM requires explanation. Explanation is friction.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Own world-building as the category now.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">Direct to fan has consensus but no clear infrastructure. That window will not stay open.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the front end the primary wedge in every demo.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">The most visceral and immediate proof of the category distinction.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Position on philosophy, not features.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">The inside-out model cannot be copied in a sprint. Lead every conversation with the framework, not the functionality. When it clicks, the product sells itself. Unlimited email sends, forever, free is the clearest answer when the room asks. We do not lead with features. But we have answers that close.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the Fan Graph the answer to every question.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">Ticket pre-sales. Merch targeting. Knowing who the real fans are. Whatever the artist cares about most, the Fan Graph is the answer. That connection has to be immediate and repeatable across every surface and every conversation.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the efficacy argument explicit.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">Organic reach on social is under 10% and falling. Every platform that owns the relationship eventually charges the artist to access it. The work does not compound. Every cycle starts from zero. Openstage changes the math. Every fan who joins is a direct, owned contact. Post to them and it reaches them. Every time.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Position the Fan Graph as the long-term reason to commit.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">The longer an artist builds on Openstage, the more complete and irreplaceable that asset becomes. The moat made tangible.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Lead with open as the enterprise argument.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">Labels, management companies, and enterprise partners are making AI stack decisions now. Openstage is not asking enterprise to replace their stack. It is asking to be the fan data layer underneath it. The Manager API, Webhooks, and MCP server make that real. That is a different conversation than any competitor is having.</p></div>
-        </div>
-        <div class="sub-section">
-          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Use Artist Services as the on-ramp.</span><span class="sub-arrow">+</span></button>
-          <div class="sub-body"><p class="body-text">Removes the single biggest blocker in the market and positions Openstage as the trusted partner, not another tool to figure out alone.</p></div>
+        <div class="win-items">
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Win on the lock and key moment.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">Name, positioning, and visual language so aligned that the meaning is immediate on first encounter.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Let the roster do the credibility work.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">The proof earns the room before a word is spoken.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Lead with aspiration, not capability.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">Build your world lands immediately. Fan CRM requires explanation. Explanation is friction.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Own world-building as the category now.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">Direct to fan has consensus but no clear infrastructure. That window will not stay open.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the front end the primary wedge in every demo.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">The most visceral and immediate proof of the category distinction.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Position on philosophy, not features.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">The inside-out model cannot be copied in a sprint. Lead every conversation with the framework, not the functionality. When it clicks, the product sells itself. Unlimited email sends, forever, free is the clearest answer when the room asks. We do not lead with features. But we have answers that close.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the Fan Graph the answer to every question.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">Ticket pre-sales. Merch targeting. Knowing who the real fans are. Whatever the artist cares about most, the Fan Graph is the answer. That connection has to be immediate and repeatable across every surface and every conversation.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the efficacy argument explicit.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">Organic reach on social is under 10% and falling. Every platform that owns the relationship eventually charges the artist to access it. The work does not compound. Every cycle starts from zero. Openstage changes the math. Every fan who joins is a direct, owned contact. Post to them and it reaches them. Every time.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Position the Fan Graph as the long-term reason to commit.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">The longer an artist builds on Openstage, the more complete and irreplaceable that asset becomes. The moat made tangible.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Lead with open as the enterprise argument.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">Labels, management companies, and enterprise partners are making AI stack decisions now. Openstage is not asking enterprise to replace their stack. It is asking to be the fan data layer underneath it. The Manager API, Webhooks, and MCP server make that real. That is a different conversation than any competitor is having.</p></div>
+          </div>
+          <div class="sub-section">
+            <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Use Artist Services as the on-ramp.</span><span class="sub-arrow">+</span></button>
+            <div class="sub-body"><p class="body-text">Removes the single biggest blocker in the market and positions Openstage as the trusted partner, not another tool to figure out alone.</p></div>
+          </div>
         </div>
       </div>
     </div>
