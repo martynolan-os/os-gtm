@@ -24,7 +24,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 
 /* HEADER */
 .site-header { background: var(--dark); border-bottom: 3px solid var(--gold); padding: 0; width: 100%; }
-.header-inner { max-width: 1200px; margin: 0 auto; padding: 28px 80px 24px; }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 28px 80px 24px; text-align: center; }
 .header-row1 { display: flex; align-items: center; margin-bottom: 6px; }
 .header-brand { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 .header-doc { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-dark); }
@@ -35,7 +35,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 
 /* NAV */
 .site-nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0; display: flex; justify-content: center; position: sticky; top: 0; z-index: 100; width: 100%; }
-.nav-inner { max-width: 1200px; width: 100%; padding: 0 80px; display: flex; overflow-x: auto; }
+.nav-inner { max-width: 1200px; width: 100%; padding: 0 80px; display: flex; overflow-x: auto; justify-content: center; }
 .site-nav a { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-dark); text-decoration: none; padding: 14px 18px; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
 .site-nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
@@ -221,12 +221,9 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 
 <header class="site-header">
 <div class="header-inner">
-  <div class="header-row1">
-    <span class="header-brand">Openstage &nbsp;·&nbsp; 2.0 GTM Strategy</span>
-  </div>
+  <span class="header-brand" style="display:block; margin-bottom:4px;">Openstage &nbsp;&nbsp; 2.0 GTM Strategy</span>
   <h1 class="header-title">BUILD YOUR <span>WORLD.</span></h1>
-  <div class="header-sub">Become your own platform, not someone else's.</div>
-  <div class="header-meta" style="margin-top:14px;">Click any section to expand for full context</div>
+  <div class="header-meta" style="margin-top:10px;">Click any section to expand for full context</div>
 </div>
 </header>
 
@@ -458,7 +455,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
     </div>
     <div class="sub-section">
       <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">5. Fan Graph as the single source of truth</span><span class="sub-arrow">+</span></button>
-      <div class="sub-body"><p class="body-text">Every release, every tour, every campaign adds to the fan graph. It is the single source of truth for every fan relationship: who came to every show, bought every drop, and has been there from the start. No other platform sees the full picture. The profile is portable, getting richer with every interaction, and it belongs to the artist wherever they take it. The Manager API and Webhooks make that portability real and programmable: fan data moves to any external system in real time, on the artist's terms. It becomes more complete and more valuable every day they stay. That is the compounding asset no competitor can replicate from a standing start.</p></div>
+      <div class="sub-body"><p class="body-text">Every release, every tour, every campaign adds to the Fan Graph. It is the single source of truth for every fan relationship: who came to every show, bought every drop, and has been there from the start. No other platform sees the full picture. The profile is portable, getting richer with every interaction, and it belongs to the artist wherever they take it. The Manager API and Webhooks make that portability real and programmable: fan data moves to any external system in real time, on the artist's terms. It becomes more complete and more valuable every day they stay. That is the compounding asset no competitor can replicate from a standing start.</p></div>
     </div>
     <div class="sub-section">
       <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">6. Platform and partner, not platform or partner</span><span class="sub-arrow">+</span></button>
@@ -669,7 +666,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
         </div>
 
         <div class="fw-card">
-          <div class="fw-header" onclick="toggleFw(this)"><span class="fw-num">7</span><span class="fw-title">'The biggest artists in the world have the strongest relationships with their fans. That's why they choose Openstage.'</span><span class="fw-arrow">+</span></div>
+          <div class="fw-header" onclick="toggleFw(this)"><span class="fw-num">7</span><span class="fw-title">'The biggest artists in the world have the strongest relationships with their fans. That is why they choose Openstage.'</span><span class="fw-arrow">+</span></div>
           <div class="fw-body">
             <p class="body-text">The roster line. Every other line in this set is a promise. This one is proof. It reframes the roster not as a feature but as validation that the thesis is correct. The artists who have built sustainable careers at the highest level have one thing in common: they treat the fan relationship as the asset. Openstage is the infrastructure they chose to build it on.</p>
             <p class="body-text">It works in three parts and each part does a distinct job. The biggest artists in the world have the strongest relationships with their fans names the pattern. It is an observable truth that requires no argument. They understand the value of building and owning those relationships names the belief. That is why they choose Openstage is the close.</p>
@@ -845,7 +842,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
     <span class="section-tagline">Early July. Hearts and minds first. Everything else follows.</span>
   </div>
   <div class="section-surface">
-    <p class="surface-text">Openstage has real product, a differentiated point of view, and a roster that earns the room before a word is spoken. None of it is showing up in market at the quality level it deserves. The identity feels louder than it is thoughtful. The visual system lacks consistency. It undersells what has been built.</p>
+    <p class="surface-text">Openstage has a real product, a differentiated point of view, and a roster that earns the room before a word is spoken. None of it is showing up in market at the quality level it deserves. The identity feels louder than it is thoughtful. The visual system lacks consistency. It undersells what has been built.</p>
     <p class="surface-text">The 2.0 relaunch closes that gap. New brand identity. New website. New content strategy. New products and features. Everything hitting together in early July. The goal is not to announce a refresh. It is to give people a reason to look at Openstage differently, literally and figuratively. A brand and product experience that matches the ambition and reflects what the offering actually is.</p>
     <p class="surface-text">This is not just a visual upgrade. It is the moment Openstage stakes the category, owns the vocabulary, and makes the differentiation unmistakable across every surface. The perception gap between what Openstage can do and how it presents in market is the single biggest drag on growth right now. Every conversation that should be easy is harder than it needs to be because the brand does not do justice to the product. The 2.0 moment fixes that.</p>
     <p class="surface-text">The primary objective of the 2.0 relaunch is hearts and minds. Everything else flows from it. Win the hearts and minds of artists, fans, and the broader music industry and traffic, sentiment, pipeline, and conversions follow. Lose them and no amount of channel spend recovers it. This launch is designed to make artists feel like Openstage was built for them, make fans feel like someone finally stood up for them, and make the industry feel like the category just got defined. Traffic and pipeline are the commercial output of that. They are not the goal. Hearts and minds is the goal.</p>
@@ -890,7 +887,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
         <table class="doc-table">
           <thead><tr><th>Phase</th><th>Timing</th><th>Focus</th><th>Key Actions</th></tr></thead>
           <tbody>
-            <tr><td><strong>Pre-launch</strong></td><td>4 weeks out</td><td>Internal alignment. Asset readiness. Press seeding.</td><td>All teams briefed on messaging and positioning. No freelancing on vocabulary or category framing. Press pre-briefed under embargo with the inside-out model and Bills of Rights as the packaged story. Artist Services ready to sell. Video library complete and QA'd. Site QA complete. Existing customers notified of the relaunch. Fan and Artist Bills of Rights finalized and designed. AI capabilities ships in June as a separate beat ahead of the full 2.0 relaunch to set up the open platform narrative before the brand fully lands.</td></tr>
+            <tr><td><strong>Pre-launch</strong></td><td>4 weeks out</td><td>Internal alignment. Asset readiness. Press seeding.</td><td>All teams briefed on messaging and positioning. No freelancing on vocabulary or category framing. Press pre-briefed under embargo with the inside-out model and Bills of Rights as the packaged story. Artist Services ready to sell. Video library complete and quality-checked. Site QA complete. Existing customers notified of the relaunch. Fan and Artist Bills of Rights finalized and designed. AI capabilities ships in June as a separate beat ahead of the full 2.0 relaunch to set up the open platform narrative before the brand fully lands.</td></tr>
             <tr><td><strong>Launch</strong></td><td>Early July</td><td>Brand goes live. PR breaks. All channels activate simultaneously.</td><td>New site and brand go live. PR embargo lifts. Social campaign launches. Email goes to full segmented base. Direct artist outreach begins. Legendary plan promoted. Content calendar activates. Fan and Artist Bills of Rights published as standalone documents with their own visual treatment.</td></tr>
             <tr><td><strong>Activation</strong></td><td>Weeks 2 to 4</td><td>Convert launch momentum into pipeline.</td><td>Demo follow-up cadence runs on every inbound lead. Artist Services conversations deepen with warm accounts. Content publishing sustains at launch cadence. PR follow-through continues with secondary placements. Community and social engagement active. Measure signal against success metrics weekly.</td></tr>
             <tr><td><strong>PLG launch</strong></td><td>Shortly after brand launch</td><td>Expand addressable market.</td><td>Self-serve signup flow live. Onboarding sequence active. Video library supports activation at scale. PLG funnel tracked and optimized continuously. Paid activated to amplify highest-performing organic content.</td></tr>
@@ -917,7 +914,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
       <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Content Strategy and Flagship Assets</span><span class="sub-arrow">+</span></button>
       <div class="sub-body">
         <p class="body-text">Practice what we preach with the inside-out model on our own narrative. Start with the people who already care. Build Openstage's world the same way we teach artists to build theirs. The content strategy is not a support layer for the brand relaunch. It is the substance of it.</p>
-        <p class="body-text">The goal is thought leadership so bold and compelling that it attracts and finds its own audience, inspires evangelism, and endears prospects to the brand before they ever see the product. When someone reads an Openstage piece of content and the inside-out model clicks, that is the moment. Content that makes people feel like they finally found someone who gets it. That feeling creates sharing. Sharing builds the brand. The brand compounds the same way a fan graph does.</p>
+        <p class="body-text">The goal is thought leadership so bold and compelling that it attracts and finds its own audience, inspires evangelism, and endears prospects to the brand before they ever see the product. When someone reads an Openstage piece of content and the inside-out model clicks, that is the moment. Content that makes people feel like they finally found someone who gets it. That feeling creates sharing. Sharing builds the brand. The brand compounds the same way a Fan Graph does.</p>
         <p class="body-text">Content is also the primary competitive weapon. Laylo, Rivet, and Co:brand have no equivalent point of view. They are tools. They do not have a thesis. Openstage does. Publishing that thesis clearly and consistently is how the category gets won before the product is ever evaluated.</p>
         <table class="doc-table">
           <thead><tr><th>Asset</th><th>What It Is</th><th>Why It Matters</th></tr></thead>
