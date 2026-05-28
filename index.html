@@ -43,8 +43,8 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 .main { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 80px 100px; }
 
 /* SECTION */
-.section-block { border-bottom: 1px solid var(--border); }
-.section-header { display: flex; align-items: center; gap: 16px; padding: 26px 0 0; }
+.section-block { border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px; }
+.section-header { display: flex; align-items: center; gap: 16px; padding: 32px 0 0; }
 .section-num { font-size: 11px; font-weight: 900; color: var(--black); background: var(--gold); padding: 4px 10px; flex-shrink: 0; letter-spacing: 0.05em; }
 .section-title { font-size: 17px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.01em; flex: 1; white-space: nowrap; }
 .section-tagline { font-size: 11px; color: var(--grey-dark); font-weight: 500; text-align: right; flex-shrink: 0; }
@@ -305,7 +305,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
     <p class="surface-text">When artists think about Openstage, the goal is one word: building. Not transactions. Not monetization. Not conversion optimization. Those are downstream. Building a world, an audience, something fans want to live inside of and that is worthy of their fandom comes first. Everything else follows.</p>
   </div>
   <div class="expand-row" onclick="toggleSection(this)">
-    <span class="expand-label">Why 'Build Your World' wins: the full argument</span>
+    <span class="expand-label">Why 'Build Your World' wins</span>
     <span class="expand-btn">+</span>
   </div>
   <div class="section-deep">
@@ -480,7 +480,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
     <p class="body-text">Rebalance the music industry in favor of artists and fans. That is the vision. Everything else in this brief is in service of it.</p>
     <p class="body-text">The artist-fan relationship is the most valuable and most underleveraged asset in music. Openstage exists to grow it. Not just for the artist. For the fan too. When artists know their fans, they can create better experiences for them. When fans get better experiences, they go deeper, stay longer, and become the artist's most powerful engine for growth. That is the dynamic Openstage is built to create and sustain. A healthier, more valuable relationship on both sides.</p>
     <p class="body-text">Every competitor brand in the category is generic SaaS. Gradients, no personality, no cultural fluency, no signal that the product was built for this industry. They could be fintech or HR tech. Nothing about them says music. That visual genericness is a trust problem as much as an aesthetic one. Artists and managers evaluate platforms on how they look before they evaluate how they work. A brand that does not feel native to music cannot earn the trust of people who live inside it. That gap is Openstage's to own visually, the same way the inside-out model owns it strategically.</p>
-    <p class="body-text">The opportunity is the stage as a literal visual concept. The brand mark as a mask or cutout. The artist lives behind it. Openstage is the stage the artist stands on. The brand recedes and the artist becomes visible through it. The infrastructure steps back. The artist steps forward. That is the inside-out model expressed as a visual system.</p>
+    <p class="body-text">One possible direction: the stage as a literal visual concept. The brand mark as a mask or cutout, with the artist visible through it. The brand recedes. The artist steps forward. The infrastructure disappears behind the person it exists to serve. It is one way the inside-out model could be expressed as a visual system, and worth pressure-testing in the sprint.</p>
     <p class="body-text">The platform is the stage. The artist is the show.</p>
     <p class="body-text">The name does not need to be translated into the positioning. It already is the positioning.</p>
     <div class="quote-line">Openstage = open stage = the stage is yours = build your world.</div>
@@ -699,20 +699,50 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
     <div class="sub-section open">
       <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">How to Win</span><span class="sub-arrow">+</span></button>
       <div class="sub-body">
-        <ul class="win-list">
-          <li><div class="win-head">Win on the lock and key moment.</div><div class="win-body">Name, positioning, and visual language so aligned that the meaning is immediate on first encounter.</div></li>
-          <li><div class="win-head">Let the roster do the credibility work.</div><div class="win-body">The proof earns the room before a word is spoken.</div></li>
-          <li><div class="win-head">Lead with aspiration, not capability.</div><div class="win-body">Build your world lands immediately. Fan CRM requires explanation. Explanation is friction.</div></li>
-          <li><div class="win-head">Own world-building as the category now.</div><div class="win-body">Direct to fan has consensus but no clear infrastructure. That window will not stay open.</div></li>
-          <li><div class="win-head">Make the front end the primary wedge in every demo.</div><div class="win-body">The most visceral and immediate proof of the category distinction.</div></li>
-          <li><div class="win-head">Position on philosophy, not features.</div><div class="win-body">The inside-out model cannot be copied in a sprint. Lead every conversation with the framework, not the functionality. When it clicks, the product sells itself. Unlimited email sends, forever, free is the clearest answer when the room asks. We do not lead with features. But we have answers that close.</div></li>
-          <li><div class="win-head">Make the Fan Graph the answer to every question.</div><div class="win-body">Ticket pre-sales. Merch targeting. Knowing who the real fans are. Whatever the artist cares about most, the Fan Graph is the answer. That connection has to be immediate and repeatable across every surface and every conversation.</div></li>
-          <li><div class="win-head">Make the efficacy argument explicit.</div><div class="win-body">Organic reach on social is under 10% and falling. Every platform that owns the relationship eventually charges the artist to access it. The work does not compound. Every cycle starts from zero. Openstage changes the math. Every fan who joins is a direct, owned contact. Post to them and it reaches them. Every time.</div></li>
-          <li><div class="win-head">Position the Fan Graph as the long-term reason to commit.</div><div class="win-body">The longer an artist builds on Openstage, the more complete and irreplaceable that asset becomes. The moat made tangible.</div></li>
-          <li><div class="win-head">Lead with open as the enterprise argument.</div><div class="win-body">Labels, management companies, and enterprise partners are making AI stack decisions now. Openstage is not asking enterprise to replace their stack. It is asking to be the fan data layer underneath it. The Manager API, Webhooks, and MCP server make that real. That is a different conversation than any competitor is having.</div></li>
-          <li><div class="win-head">Use Artist Services as the on-ramp.</div><div class="win-body">Removes the single biggest blocker in the market and positions Openstage as the trusted partner, not another tool to figure out alone.</div></li>
-          <li><div class="win-head">Target managers as the multiplier.</div><div class="win-body">A single manager win is a roster win. Managers who adopt the inside-out model bring it to every artist they work with and every manager in their network. The highest-leverage entry point in the market.</div></li>
-        </ul>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Win on the lock and key moment.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">Name, positioning, and visual language so aligned that the meaning is immediate on first encounter.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Let the roster do the credibility work.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">The proof earns the room before a word is spoken.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Lead with aspiration, not capability.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">Build your world lands immediately. Fan CRM requires explanation. Explanation is friction.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Own world-building as the category now.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">Direct to fan has consensus but no clear infrastructure. That window will not stay open.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the front end the primary wedge in every demo.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">The most visceral and immediate proof of the category distinction.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Position on philosophy, not features.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">The inside-out model cannot be copied in a sprint. Lead every conversation with the framework, not the functionality. When it clicks, the product sells itself. Unlimited email sends, forever, free is the clearest answer when the room asks. We do not lead with features. But we have answers that close.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the Fan Graph the answer to every question.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">Ticket pre-sales. Merch targeting. Knowing who the real fans are. Whatever the artist cares about most, the Fan Graph is the answer. That connection has to be immediate and repeatable across every surface and every conversation.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the efficacy argument explicit.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">Organic reach on social is under 10% and falling. Every platform that owns the relationship eventually charges the artist to access it. The work does not compound. Every cycle starts from zero. Openstage changes the math. Every fan who joins is a direct, owned contact. Post to them and it reaches them. Every time.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Position the Fan Graph as the long-term reason to commit.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">The longer an artist builds on Openstage, the more complete and irreplaceable that asset becomes. The moat made tangible.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Lead with open as the enterprise argument.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">Labels, management companies, and enterprise partners are making AI stack decisions now. Openstage is not asking enterprise to replace their stack. It is asking to be the fan data layer underneath it. The Manager API, Webhooks, and MCP server make that real. That is a different conversation than any competitor is having.</p></div>
+        </div>
+        <div class="sub-section">
+          <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Use Artist Services as the on-ramp.</span><span class="sub-arrow">+</span></button>
+          <div class="sub-body"><p class="body-text">Removes the single biggest blocker in the market and positions Openstage as the trusted partner, not another tool to figure out alone.</p></div>
+        </div>
       </div>
     </div>
 
