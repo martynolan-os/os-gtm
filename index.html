@@ -78,7 +78,8 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 .sub-section.open .sub-body { display: block; }
 
 /* Section group label */
-.sub-section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); padding: 16px 0 10px; }
+.sub-section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); padding: 24px 0 10px; margin-top: 8px; border-top: 1px solid var(--border); }
+.section-divider { display: none; }
 
 /* Win items: nested sub-sections that reset indentation to look like top-level cards */
 .win-items { display: flex; flex-direction: column; gap: 8px; padding: 0; }
@@ -704,7 +705,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
   </div>
   <div class="section-deep">
 
-    <div class="sub-section-label">How to Win</div>
+    <div class="sub-section-label" style="border-top:none;padding-top:8px;">How to Win</div>
     <div class="sub-section">
       <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Win on the lock and key moment.</span><span class="sub-arrow">+</span></button>
       <div class="sub-body"><p class="body-text">Name, positioning, and visual language so aligned that the meaning is immediate on first encounter.</p></div>
@@ -750,18 +751,31 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
       <div class="sub-body"><p class="body-text">Removes the single biggest blocker in the market and positions Openstage as the trusted partner, not another tool to figure out alone.</p></div>
     </div>
 
+    <div class="section-divider"></div>
+    <div class="sub-section-label">Five Things This GTM Has to Nail</div>
+
     <div class="sub-section">
-      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Five Things This GTM Has to Nail</span><span class="sub-arrow">+</span></button>
-      <div class="sub-body">
-        <ol class="num-list">
-          <li><strong>Make the problem undeniable before introducing the solution.</strong> Artists are in different stages of awareness. Many feel the frustration but have not yet made it structural. The GTM has to do the diagnostic work first. The inside-out model is the tool. It reframes a personal problem as a structural one and makes the solution a natural leap rather than a sales pitch.</li>
-          <li><strong>Inspire around the world they are building by speaking to outcomes.</strong> Artists do not buy software. They buy a vision of what their career could look like. Every conversation, every piece of content, and every demo has to answer the question they are actually asking: what does my world look like when this is working? Build your world is not a tagline. It is the promise the entire GTM has to deliver on. Lead with what becomes possible. The product is the proof.</li>
-          <li><strong>Own the vocabulary.</strong> World-building, not fan CRM. Audience development, not data management. Fan relationships, not contact records. When the industry starts using these terms without attribution, the category is won.</li>
-          <li><strong>Lower the perceived barrier to entry.</strong> The biggest risk is a prospect who gets it, wants it, and still does not know how to begin. Artist Services is the on-ramp for teams that need a partner to run point. The Learning Academy is the on-ramp for everyone else. A library of videos that make the product, its capabilities, and the thinking behind it fully accessible without requiring a sales call or a dedicated resource. The goal is to make audience development feel decoded, not daunting. Self-serve starts here.</li>
-          <li><strong>Earn trust visually before earning it intellectually.</strong> Artists and managers with high aesthetic standards evaluate platforms on how they look before they evaluate how they work. The brand has to feel music-native before a word is read.</li>
-        </ol>
-      </div>
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Make the problem undeniable before introducing the solution.</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">Artists are in different stages of awareness. Many feel the frustration but have not yet made it structural. The GTM has to do the diagnostic work first. The inside-out model is the tool. It reframes a personal problem as a structural one and makes the solution a natural leap rather than a sales pitch.</p></div>
     </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Inspire around the world they are building by speaking to outcomes.</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">Artists do not buy software. They buy a vision of what their career could look like. Every conversation, every piece of content, and every demo has to answer the question they are actually asking: what does my world look like when this is working? Build your world is not a tagline. It is the promise the entire GTM has to deliver on. Lead with what becomes possible. The product is the proof.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Own the vocabulary.</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">World-building, not fan CRM. Audience development, not data management. Fan relationships, not contact records. When the industry starts using these terms without attribution, the category is won.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Lower the perceived barrier to entry.</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">The biggest risk is a prospect who gets it, wants it, and still does not know how to begin. Artist Services is the on-ramp for teams that need a partner to run point. The Learning Academy is the on-ramp for everyone else. A library of videos that make the product, its capabilities, and the thinking behind it fully accessible without requiring a sales call or a dedicated resource. The goal is to make audience development feel decoded, not daunting. Self-serve starts here.</p></div>
+    </div>
+    <div class="sub-section" style="margin-bottom:20px;">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Earn trust visually before earning it intellectually.</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">Artists and managers with high aesthetic standards evaluate platforms on how they look before they evaluate how they work. The brand has to feel music-native before a word is read.</p></div>
+    </div>
+
+    <div class="sub-section-label">Awareness, Positioning and Channel Strategy</div>
 
     <div class="sub-section">
       <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">The Awareness Model</span><span class="sub-arrow">+</span></button>
