@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Openstage 2.0 GTM Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0a0a0a;
+  --dark: #111111;
+  --card: #181818;
+  --border: #2a2a2a;
+  --gold: #F0C132;
+  --gold-dim: #c49f2e;
+  --white: #ffffff;
+  --grey: #aaaaaa;
+  --grey-dark: #666666;
+  --body-text: #cccccc;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--body-text); font-size: 14px; line-height: 1.75; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; align-items: center; }
+
+/* HEADER */
+.site-header { background: var(--dark); border-bottom: 3px solid var(--gold); padding: 0; width: 100%; }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 28px 80px 24px; }
+.header-row1 { display: flex; align-items: center; margin-bottom: 6px; }
+.header-brand { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.header-doc { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-dark); }
+.header-title { font-size: 42px; font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1; text-transform: uppercase; white-space: nowrap; }
+.header-title span { color: var(--gold); }
+.header-sub { font-size: 18px; color: var(--grey); margin-top: 4px; font-style: italic; }
+.header-meta { font-size: 10px; color: var(--grey-dark); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* NAV */
+.site-nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0; display: flex; justify-content: center; position: sticky; top: 0; z-index: 100; width: 100%; }
+.nav-inner { max-width: 1200px; width: 100%; padding: 0 80px; display: flex; overflow-x: auto; }
+.site-nav a { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-dark); text-decoration: none; padding: 14px 18px; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+.site-nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* MAIN */
+.main { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 80px 100px; }
+
+/* SECTION */
+.section-block { border-bottom: 1px solid var(--border); }
+.section-header { display: flex; align-items: center; gap: 16px; padding: 26px 0 0; }
+.section-num { font-size: 11px; font-weight: 900; color: var(--black); background: var(--gold); padding: 4px 10px; flex-shrink: 0; letter-spacing: 0.05em; }
+.section-title { font-size: 17px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.01em; flex: 1; white-space: nowrap; }
+.section-tagline { font-size: 11px; color: var(--grey-dark); font-weight: 500; text-align: right; flex-shrink: 0; }
+
+/* Surface copy always visible */
+.section-surface { padding: 16px 0 0; }
+.surface-text { font-size: 13px; color: var(--body-text); line-height: 1.8; margin-bottom: 12px; }
+
+/* Expand row */
+.expand-row { display: flex; align-items: center; gap: 10px; padding: 14px 0 20px; cursor: pointer; user-select: none; border-top: 1px solid var(--border); margin-top: 4px; }
+.expand-row:hover .expand-label { color: var(--gold); }
+.expand-row:hover .expand-btn { border-color: var(--gold); color: var(--gold); }
+.expand-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-dark); transition: color 0.2s; }
+.expand-btn { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--grey-dark); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--grey-dark); flex-shrink: 0; transition: transform 0.25s, border-color 0.2s, color 0.2s; }
+.section-block.open .expand-btn { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
+.section-block.open .expand-label { color: var(--gold); }
+
+/* Deep content */
+.section-deep { display: none; padding-bottom: 32px; }
+.section-block.open .section-deep { display: block; }
+
+/* Sub-section */
+.sub-section { border: 1px solid var(--border); background: var(--card); margin-bottom: 8px; }
+.sub-toggle { display: flex; align-items: center; gap: 14px; padding: 14px 18px; cursor: pointer; user-select: none; width: 100%; background: none; border: none; text-align: left; }
+.sub-toggle:hover .sub-title { color: var(--gold); }
+.sub-title { font-size: 12px; font-weight: 700; color: var(--white); flex: 1; transition: color 0.2s; }
+.sub-arrow { width: 18px; height: 18px; border: 1.5px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--grey-dark); flex-shrink: 0; transition: transform 0.25s, border-color 0.2s, color 0.2s; }
+.sub-section.open .sub-arrow { transform: rotate(45deg); border-color: var(--gold-dim); color: var(--gold-dim); }
+.sub-section.open .sub-title { color: var(--gold); }
+.sub-body { display: none; padding: 14px 18px 18px; border-top: 1px solid var(--border); }
+.sub-section.open .sub-body { display: block; }
+
+/* Body text */
+.body-text { font-size: 12px; color: var(--body-text); line-height: 1.8; margin-bottom: 12px; }
+.sub-heading { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin: 18px 0 8px; }
+
+/* Quote */
+.quote-line { border-left: 3px solid var(--gold); padding: 12px 16px; margin: 14px 0; background: rgba(240,193,50,0.04); font-size: 13px; font-weight: 600; color: var(--white); font-style: italic; line-height: 1.6; }
+
+/* Flow line */
+.flow-line { background: rgba(240,193,50,0.05); border: 1px solid rgba(240,193,50,0.2); padding: 12px 16px; margin: 12px 0; font-size: 12px; color: var(--gold); font-weight: 600; line-height: 1.7; }
+
+/* Bullet list */
+.bullet-list { margin: 8px 0 14px; padding: 0; list-style: none; }
+.bullet-list li { font-size: 12px; color: var(--body-text); line-height: 1.75; padding: 7px 0 7px 18px; position: relative; border-bottom: 1px solid var(--border); }
+.bullet-list li:last-child { border-bottom: none; }
+.bullet-list li::before { content: ''; position: absolute; left: 0; top: 14px; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+.bullet-list li strong { color: var(--white); font-weight: 700; }
+
+/* Filter list */
+.filter-list { margin: 8px 0 14px; padding: 0; list-style: none; }
+.filter-list li { font-size: 12px; color: var(--body-text); line-height: 1.75; padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: flex-start; }
+.filter-list li:last-child { border-bottom: none; }
+
+/* Numbered list */
+.num-list { margin: 8px 0 14px; padding: 0; list-style: none; counter-reset: num; }
+.num-list li { counter-increment: num; font-size: 12px; color: var(--body-text); line-height: 1.75; padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid var(--border); }
+.num-list li:last-child { border-bottom: none; }
+.num-list li::before { content: counter(num); position: absolute; left: 0; top: 10px; width: 21px; height: 21px; background: var(--gold); color: var(--black); font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+.num-list li strong { color: var(--white); font-weight: 700; }
+
+/* Card grid */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--border); margin: 12px 0 18px; border: 1px solid var(--border); width: 100%; }
+.card-item { background: var(--dark); padding: 16px 14px; }
+.card-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+.card-title { font-size: 12px; font-weight: 700; color: var(--white); margin-bottom: 6px; line-height: 1.3; }
+.card-body { font-size: 11px; color: var(--grey); line-height: 1.6; }
+
+/* Competitor strip */
+.competitor-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); margin: 14px 0 10px; border: 1px solid var(--border); }
+.comp-item { background: var(--dark); padding: 14px 14px; }
+.comp-name { font-size: 12px; font-weight: 900; color: var(--white); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+.comp-desc { font-size: 10px; color: var(--grey-dark); font-weight: 500; }
+
+/* Tables */
+.doc-table { width: 100%; border-collapse: collapse; margin: 12px auto 18px; font-size: 11px; display: table; }
+.doc-table th { background: #161616; color: var(--gold); font-weight: 700; padding: 9px 13px; text-align: left; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--gold); }
+.doc-table td { padding: 9px 13px; border-bottom: 1px solid var(--border); color: var(--body-text); vertical-align: top; line-height: 1.65; }
+.doc-table tr:last-child td { border-bottom: none; }
+.doc-table td strong { color: var(--white); font-weight: 700; display: block; margin-bottom: 2px; }
+.tag-high { background: rgba(100,200,100,0.12); color: #6dc86d; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; display: inline-block; }
+.tag-med { background: rgba(240,193,50,0.1); color: var(--gold); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; display: inline-block; }
+.tag-low { background: rgba(150,150,150,0.1); color: var(--grey-dark); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; display: inline-block; }
+
+/* For / Against */
+.opinions-table { width: 100%; border-collapse: collapse; margin: 12px auto 18px; font-size: 11px; display: table; }
+.opinions-table th { padding: 9px 13px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+.opinions-table th:first-child { color: #6dc86d; }
+.opinions-table th:last-child { color: #e06060; }
+.opinions-table td { padding: 9px 13px; border-bottom: 1px solid var(--border); color: var(--body-text); vertical-align: top; line-height: 1.65; width: 50%; }
+.opinions-table td strong { color: var(--white); }
+.opinions-table tr:last-child td { border-bottom: none; }
+
+/* Messaging framework cards */
+.fw-card { border: 1px solid var(--border); margin-bottom: 7px; background: var(--dark); }
+.fw-header { display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer; user-select: none; }
+.fw-header:hover .fw-title { color: var(--gold); }
+.fw-num { font-size: 10px; font-weight: 700; color: var(--black); background: var(--gold); padding: 2px 7px; flex-shrink: 0; }
+.fw-title { font-size: 12px; font-weight: 700; color: var(--white); flex: 1; font-style: italic; transition: color 0.2s; }
+.fw-arrow { font-size: 12px; color: var(--grey-dark); transition: transform 0.2s, color 0.2s; }
+.fw-card.open .fw-arrow { transform: rotate(45deg); color: var(--gold); }
+.fw-card.open .fw-title { color: var(--gold); }
+.fw-body { display: none; padding: 0 16px 16px; border-top: 1px solid var(--border); }
+.fw-card.open .fw-body { display: block; }
+
+/* Growth visual */
+.growth-visual { margin: 18px auto; width: 100%; background: var(--dark); border: 1px solid var(--border); padding: 24px 22px; }
+.growth-visual-title { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+.growth-loop { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; justify-content: center; }
+.loop-node { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.loop-circle { width: 76px; height: 76px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; text-align: center; font-size: 10px; font-weight: 700; color: var(--white); line-height: 1.3; padding: 7px; background: rgba(240,193,50,0.05); }
+.loop-circle.active { background: var(--gold); color: var(--black); }
+.loop-arrow { font-size: 16px; color: var(--gold); margin: 0 4px; align-self: center; margin-top: -16px; }
+.loop-label { font-size: 9px; color: var(--grey-dark); text-align: center; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; max-width: 76px; }
+.growth-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 18px; border: 1px solid var(--border); }
+.metric-item { background: var(--dark); padding: 11px 13px; }
+.metric-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.metric-value { font-size: 11px; color: var(--white); font-weight: 600; }
+.metric-desc { font-size: 10px; color: var(--grey-dark); margin-top: 2px; line-height: 1.4; }
+
+/* Loop back row */
+.loop-back-row { text-align: center; margin-top: 10px; }
+.loop-back-arrow { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.06em; }
+
+/* Gold card variant */
+.card-gold { background: var(--gold) !important; }
+.card-gold .card-label { color: rgba(0,0,0,0.6); }
+.card-gold .card-title { color: var(--black); }
+.card-gold .card-body { color: rgba(0,0,0,0.75); }
+
+/* Inline more context */
+.inline-more { display: flex; align-items: center; gap: 10px; padding: 10px 0 12px; cursor: pointer; user-select: none; border-top: 1px solid var(--border); margin-top: 4px; }
+.inline-more:hover .inline-more-label { color: var(--gold); }
+.inline-more:hover .inline-more-btn { border-color: var(--gold); color: var(--gold); }
+.inline-more-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-dark); transition: color 0.2s; }
+.inline-more-btn { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--grey-dark); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--grey-dark); flex-shrink: 0; transition: transform 0.25s, border-color 0.2s, color 0.2s; }
+.inline-more.open .inline-more-btn { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
+.inline-more.open .inline-more-label { color: var(--gold); }
+.inline-deep { display: none; padding-bottom: 16px; }
+.inline-deep.open { display: block; }
+
+/* Gravitational diagram */
+.grav-diagram { margin: 14px 0 4px; }
+.grav-row { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; justify-content: center; }
+.grav-node { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.grav-label-top { font-size: 8px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-dark); text-align: center; height: 12px; }
+.grav-circle { width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; text-align: center; font-size: 10px; font-weight: 700; color: var(--white); line-height: 1.3; padding: 7px; background: rgba(240,193,50,0.05); }
+.grav-gold .grav-circle { background: var(--gold); color: var(--black); border-color: var(--gold); }
+.grav-arrow-right { font-size: 16px; color: var(--gold); margin: 0 4px; margin-top: -6px; align-self: center; }
+.site-footer { background: var(--dark); border-top: 1px solid var(--border); padding: 22px 48px; text-align: center; width: 100%; }
+.site-footer p { font-size: 10px; color: var(--grey-dark); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Win list - card per item */
+.win-list { margin: 12px 0 14px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 3px; }
+.win-list li { background: var(--card); border: 1px solid var(--border); padding: 18px 20px 18px 52px; position: relative; }
+.win-list li::before { content: ''; position: absolute; left: 20px; top: 25px; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+.win-head { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 7px; line-height: 1.4; }
+.win-body { font-size: 12px; color: var(--body-text); line-height: 1.75; }
+
+/* Quote plain variant */
+.quote-plain { font-style: normal !important; font-weight: 700 !important; letter-spacing: 0.01em; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+<div class="header-inner">
+  <div class="header-row1">
+    <span class="header-brand">Openstage &nbsp;·&nbsp; 2.0 GTM Strategy</span>
+  </div>
+  <h1 class="header-title">BUILD YOUR <span>WORLD.</span></h1>
+  <div class="header-sub">Become your own platform, not someone else's.</div>
+  <div class="header-meta" style="margin-top:14px;">Click any section to expand for full context</div>
+</div>
+</header>
+
+<nav class="site-nav">
+<div class="nav-inner">
+  <a href="#market">1. Market</a>
+  <a href="#positioning">2. Positioning</a>
+  <a href="#narrative">3. Narrative</a>
+  <a href="#differentiation">4. Differentiation</a>
+  <a href="#brand">5. Brand</a>
+  <a href="#gtm">6. GTM</a>
+  <a href="#relaunch">7. 2.0 Relaunch</a>
+</div>
+</nav>
+
+<div class="main">
+
+<!-- 01 MARKET -->
+<div class="section-block" id="market">
+  <div class="section-header">
+    <span class="section-num">1</span>
+    <span class="section-title">Market Requirements</span>
+    <span class="section-tagline">Why now. Why here. Why Openstage.</span>
+  </div>
+  <div class="section-surface">
+    <p class="surface-text">The music industry runs on relationships, taste, and gut instinct. Data and technology are foreign concepts to most. When they do show up, they are met with suspicion. This is not a market that buys software. It is a market that buys trust. The category has a trust problem before Openstage walks in the room.</p>
+  </div>
+  <div class="expand-row" onclick="toggleSection(this)">
+    <span class="expand-label">The full market context: execution gap, trust problem, and six core dynamics</span>
+    <span class="expand-btn">+</span>
+  </div>
+  <div class="section-deep">
+    <p class="body-text">Artists are artists first. Business second, if at all. CRM, CDP, data layer, lifecycle marketing: these are enterprise software terms that create distance and make the solution feel like work. The people we are selling to think in terms of fans, releases, and tours. Every time the wrong word is used, the room is lost. Managers who use data intentionally are the 1% exception, not the rule. Most teams would rather do almost anything than engage with software that feels like enterprise technology. They do not want to pay for it, they do not want to learn it, and they will not use it unless it feels completely natural to how they already work. More importantly, unless they see an artist they admire do something inspiring with tangible success outcomes.</p>
+    <p class="body-text">Another critical aspect to address is execution. Almost every artist and manager in the target segment knows they should be building their audience more intentionally. They are not doing it. Audience development is hard. It requires understanding who your fans are, how they behave, and what they want, and then acting on that understanding consistently, at scale, at the individual level. Most artists never get there. Not because they do not care. Because the gap between knowing and doing has always been too wide. That gap between intention and execution is caused by the lack of a clear methodology, no dedicated resource, and no obvious starting point. While the solution has to feel accessible and executable, and also needs to compel and inspire on aspirational terms.</p>
+    <p class="body-text">Six core dynamics validate our market opportunity and answer the why now question. What follows is the strategic case for how Openstage capitalizes on it.</p>
+    <div class="sub-section open">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">1. Algorithm backlash</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">Streaming and social, the two primary growth channels, are widely perceived to be a rigged lottery. Artists and managers know something is structurally broken and are actively looking for a better way. Negative sentiment is at critical mass, with Spotify squarely as the target of creator ire. We are at a critical inflection point. The deeper damage is psychological. The algorithm does not just feel unfair. It makes artist development feel futile and amplifies the cold start problem for new creators.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">2. Direct to fan is the consensus path forward</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">The industry has largely reached agreement on the direction. Artists, managers, and even labels understand that owning the fan relationship is the only sustainable model. The question is no longer whether to build direct to fan. It is how. Most teams know they should be doing it and do not have the tools, the methodology, or the infrastructure to execute it properly. That is the gap Openstage fills. The market has validated the thesis. Openstage is the platform built to deliver on it.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">3. Shift in growth responsibility</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">Artists are increasingly realizing the value of building on their own terms. Maintaining leverage. Winning without compromising. The cultural shift away from traditional deal structures toward independence is real and accelerating. Even major label deals reflect this: they are all distribution deals now. No more owned IP. Signing away control is no longer the aspiration. Owning the outcome is.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">4. Return to human curation and connection</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">There is a visible and accelerating trend away from algorithmic discovery toward direct, intentional fan relationships. People are feeling increasingly isolated and strive for something more. They want to feel seen, heard, and part of a community with tangible, real-world benefits. The AI content flood is accelerating that urgency. Every channel is drowning in it. Attention spans are eroding. People are tuning out. What cuts through is real art from real artists.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">5. AI as the execution unlock</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">The arrival of AI removes the last remaining excuse for not leaning into and fully adopting audience development as part of any artist's marketing strategy. Domain expertise, execution bandwidth, data literacy: the barriers that kept meaningful fan relationship work out of reach for most artist teams are collapsing. Every artist now has access to a marketing intelligence layer that used to require a full team. The platforms that have the richest underlying data will produce the best AI outputs. The ones that do not will be commoditized by it. Openstage is positioned to win that race because the fan record is already there.</p>
+        <p class="body-text">Audience development is hard. It requires understanding who your fans are, how they behave, and what they want, and then acting on that understanding consistently, at scale, at the individual level. Most artists never get there. Not because they do not care. Because the gap between knowing and doing has always been too wide. Rosa and MCP close that gap. The behavioral data is already there. Rosa makes it prescriptive: here is what your audience is telling you, here is what to do next. MCP makes it executable: act on it directly, inside Claude and ChatGPT, without friction, without intermediaries. The richer the data, the smarter the recommendation. The smarter the recommendation, the stronger the relationship. That compounding loop, between understanding your fans and delivering for them, is what Openstage was built to power.</p>
+      </div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">6. Category whitespace</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">Audience development in music is still an emerging discipline. Most artists and managers know they should be doing it. Very few have the tools, the training, or the infrastructure to execute it properly. What exists today is fragmented across platforms that do not talk to each other, producing data that does not connect and outcomes that do not compound. The competitors are siloed.</p>
+        <div class="competitor-strip">
+          <div class="comp-item"><div class="comp-name">Laylo</div><div class="comp-desc">RSVP Conversions</div></div>
+          <div class="comp-item"><div class="comp-name">Co:brand</div><div class="comp-desc">Marketing toolkit for labels</div></div>
+          <div class="comp-item"><div class="comp-name">Rivet</div><div class="comp-desc">Campaign-centric</div></div>
+          <div class="comp-item"><div class="comp-name">Even</div><div class="comp-desc">Transaction-centric</div></div>
+        </div>
+        <p class="body-text">They either own one use case and one moment, or speak to a different customer segment altogether. Openstage owns the fan, the data, and the fan experience. No one has staked the category. Openstage does.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 POSITIONING -->
+<div class="section-block" id="positioning">
+  <div class="section-header">
+    <span class="section-num">2</span>
+    <span class="section-title">Product Positioning</span>
+    <span class="section-tagline">The category we are creating is world-building.</span>
+  </div>
+  <div class="section-surface">
+    <div class="quote-line">The category we are creating is world-building. Not CRM. Not fan data analytics. This is the opportunity to dominate a category Openstage can own entirely, in a lane no other company can compete in.</div>
+    <p class="surface-text">World-building is creating a living, breathing fan ecosystem with momentum and gravitational pull. A place fans return to. A place fans interact with the artist and with each other. A platform whose value compounds the more fans engage with it.</p>
+    <p class="surface-text">When artists think about Openstage, the goal is one word: building. Not transactions. Not monetization. Not conversion optimization. Those are downstream. Building a world, an audience, something fans want to live inside of and that is worthy of their fandom comes first. Everything else follows.</p>
+  </div>
+  <div class="expand-row" onclick="toggleSection(this)">
+    <span class="expand-label">Why 'Build Your World' wins: the full argument</span>
+    <span class="expand-btn">+</span>
+  </div>
+  <div class="section-deep">
+    <p class="body-text">Openstage has been positioned around knowing and valuing fans. While that framing is certainly accurate, 'know your fans' and 'value your fans' are outcomes. 'Build your world' is an intention. Outcomes describe what artists receive. Intentions describe what artists set out to create. That is a different conversation entirely, and it is the one that cuts through.</p>
+    <p class="body-text">'Build your world' is aspirational in a way that lands immediately. Ownership. Independence. A direct relationship with the people who care most. Not spray and pray. Not a rigged lottery. A real, tangible, 1 to 1 connection that builds value over time.</p>
+    <p class="body-text">It also solves the efficacy problem that the algorithm created. One plus one equals two, every time. The first ten fans who join your world are ten real relationships with real signal and real feedback. You do not need a massive audience to start. You need the right infrastructure to make every fan count. A direct 1 to 1 connection gives immediate validation that no algorithm can manufacture and no platform can take away. Effort in, dependable result back. That promise is what is missing everywhere else, and it is what Openstage delivers.</p>
+    <p class="body-text">It is also the only entry point no competitor can claim. No competitor has the front end to back it up. And the world is what generates the data layer that makes knowing and valuing fans structural rather than aspirational. Without an owned world, there is no first party data. Without first party data, there is no behavioral layer. Without the behavioral layer, know and value are just promises any platform can make. Openstage is the only platform where they are core to the value proposition.</p>
+    <p class="body-text">Building a world supersedes the value proposition of every competitor in the category, in ambition, in infrastructure, and in the compounding value it creates over time.</p>
+  </div>
+</div>
+
+<!-- 03 NARRATIVE -->
+<div class="section-block" id="narrative">
+  <div class="section-header">
+    <span class="section-num">3</span>
+    <span class="section-title">Strategic Narrative</span>
+    <span class="section-tagline">The inside-out model. Fan-led growth. Gravitational growth.</span>
+  </div>
+  <div class="section-surface">
+    <p class="surface-text">The only challenge with this positioning happens to be its strategic opening. World-building requires education. Artists and managers have been trained to build from the outside in for a decade. That is the friction.</p>
+    <p class="surface-text">The good news is that it is the antidote to their pain. People are looking for a better way and a new path. The education is the differentiation. The inside-out model is the teachable framework that makes world-building accessible and gives Openstage a proprietary approach to artist growth no competitor can match: one that is fan-led, not platform-dependent.</p>
+    <p class="surface-text">When someone encounters the inside-out model and it clicks, they feel like they finally found someone who gets it. That is the feeling the brand needs to create. That is what makes prospects into advocates before they ever open the product. That is why the positioning shift matters as much as the product itself.</p>
+  </div>
+  <div class="expand-row" onclick="toggleSection(this)">
+    <span class="expand-label">Inside-out model, fan-led growth loop, gravitational growth: full detail</span>
+    <span class="expand-btn">+</span>
+  </div>
+  <div class="section-deep">
+    <div class="sub-section open">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">The Inside-Out Model</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">The inside-out model does not just change how artists grow. It changes what growth compounds into. Fans stay longer, spend more, and bring in more fans. Fandom compounds with every interaction. Depth of relationship drives depth of spend. Visible fandom creates gravitational pull. Better fan experiences lead to stronger fandom lead to compounding growth.</p>
+        <div class="card-grid" style="margin-bottom:20px;">
+          <div class="card-item"><div class="card-label">Stage 1</div><div class="card-title">Build Your World</div><div class="card-body">Start with the fans you already have. Own the relationship completely. The world is the foundation everything else runs on.</div></div>
+          <div class="card-item"><div class="card-label">Stage 2</div><div class="card-title">Bring People Into It</div><div class="card-body">Every moment of discovery converts into a direct relationship. Pull people back to owned land at every touchpoint.</div></div>
+          <div class="card-item"><div class="card-label">Stage 3</div><div class="card-title">Superserve Your Core</div><div class="card-body">Overdeliver for the few. The many will follow. Depth becomes visible. Visible fandom creates gravitational pull.</div></div>
+        </div>
+        <p class="body-text">The three stages create a loop we call fan-led growth. The analog is product-led growth: the model that redefined how software scales by making the product itself the growth engine. Slack, Notion, and Figma grew because the product was so valuable that users brought in more users.</p>
+        <p class="body-text">Fan-led growth does the same for music. When artists stop chasing reach and start building depth, the fans inside become the growth engine. Fandom deepens. Depth becomes visible. Visible fandom pulls new fans in without paid acquisition or algorithm dependency. Openstage is the only system built to run it.</p>
+        <div class="growth-visual">
+          <div class="growth-visual-title">Fan-Led Growth Loop</div>
+          <div class="growth-loop">
+            <div class="loop-node"><div class="loop-circle active">Build<br>Your<br>World</div><div class="loop-label">Foundation</div></div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-node"><div class="loop-circle">Fans<br>Feel<br>Seen</div><div class="loop-label">Recognition</div></div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-node"><div class="loop-circle">Fandom<br>Deepens</div><div class="loop-label">Depth</div></div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-node"><div class="loop-circle">Intensity<br>Becomes<br>Visible</div><div class="loop-label">Signal</div></div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-node"><div class="loop-circle">New Fans<br>Arrive</div><div class="loop-label">Gravity</div></div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-node"><div class="loop-circle active">World<br>Grows</div><div class="loop-label">Compounding</div></div>
+          </div>
+          <div class="loop-back-row">
+            <span class="loop-back-arrow">↩ The loop continues</span>
+          </div>
+          <div class="growth-metrics">
+            <div class="metric-item"><div class="metric-label">Known Fan %</div><div class="metric-value">Contactable fans / total audience</div><div class="metric-desc">How much of your audience you actually own</div></div>
+            <div class="metric-item"><div class="metric-label">Active Fan Rate</div><div class="metric-value">Engaged fans / known fans</div><div class="metric-desc">How many owned fans are actively in the world</div></div>
+            <div class="metric-item"><div class="metric-label">Core Fan Rate</div><div class="metric-value">Superfans / active fans</div><div class="metric-desc">The depth ratio. The stronger this is, the more gravitational pull you have</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Gravitational Growth</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">With Inside-Out, the future of artist growth is not viral. It is gravitational. Build your world. Bring people into it. Superserve your core. Visible fandom is magnetic. It pulls new fans in without paid acquisition, without algorithm dependency, without starting from zero. Gravitational growth requires knowing the shape of your audience, not just the size.</p>
+        <p class="body-text">Size is the number of people. Shape is the ratio of listeners to fans to superfans. Known Fan %, Active Fan Rate, Core Fan Rate. The better the shape, the stronger the flywheel.</p>
+
+        <div class="growth-visual">
+          <div class="growth-visual-title">Gravitational Growth Model</div>
+          <div class="grav-diagram">
+            <div class="grav-row">
+              <div class="grav-node grav-gold"><div class="grav-label-top">Start here</div><div class="grav-circle">Overdeliver<br>for Core<br>Fans</div></div>
+              <div class="grav-arrow-right">→</div>
+              <div class="grav-node"><div class="grav-label-top">&nbsp;</div><div class="grav-circle">Fans Go<br>Deeper</div></div>
+              <div class="grav-arrow-right">→</div>
+              <div class="grav-node"><div class="grav-label-top">&nbsp;</div><div class="grav-circle">Depth<br>Becomes<br>Visible</div></div>
+              <div class="grav-arrow-right">→</div>
+              <div class="grav-node"><div class="grav-label-top">&nbsp;</div><div class="grav-circle">New Fans<br>Pulled In</div></div>
+              <div class="grav-arrow-right">→</div>
+              <div class="grav-node grav-gold"><div class="grav-label-top">Repeat</div><div class="grav-circle">World<br>Grows</div></div>
+            </div>
+            <div class="loop-back-row"><span class="loop-back-arrow">↩ Overdeliver for the few. The many will follow.</span></div>
+          </div>
+          <div class="growth-metrics" style="margin-top:18px;">
+            <div class="metric-item"><div class="metric-label">Audience Size</div><div class="metric-value">Total reach across all platforms</div><div class="metric-desc">A vanity metric without shape behind it</div></div>
+            <div class="metric-item"><div class="metric-label">Audience Shape</div><div class="metric-value">Listeners : Fans : Superfans</div><div class="metric-desc">The ratio that determines gravitational pull and flywheel strength</div></div>
+            <div class="metric-item"><div class="metric-label">Gravitational Pull</div><div class="metric-value">Visible fandom creates inbound</div><div class="metric-desc">No paid acquisition. No algorithm. New fans arrive because something real is happening</div></div>
+          </div>
+        </div>
+
+        <p class="body-text">Start with your fans first, then invite the world in. It deepens the bond with the fans who matter most and signals to everyone watching that something real is happening here. That signal creates pull. Overdeliver for the few. The many will follow.</p>
+        <p class="body-text">Every discovery moment has to feed it. Pull people back to owned land. Want a ticket? Want the LP? Want to hear it first? Come through us. Every moment of discovery converts into a direct relationship. That is how the world grows. Not through algorithms. Through gravity.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 DIFFERENTIATION -->
+<div class="section-block" id="differentiation">
+  <div class="section-header">
+    <span class="section-num">4</span>
+    <span class="section-title">Differentiation Strategy</span>
+    <span class="section-tagline">A structural position no competitor can reach.</span>
+  </div>
+  <div class="section-surface">
+    <p class="surface-text">Openstage's differentiation is not a list of features. It is a structural position no competitor can reach from where they currently stand.</p>
+    <p class="surface-text">As mentioned above, competitors either own one use case and one moment, or speak to a different customer segment altogether. Most importantly, none of them are present at enough moments in the fan relationship to build a real behavioral data layer. That is the opening. Openstage defines the category above them.</p>
+  </div>
+  <div class="inline-more" onclick="toggleInline(this)">
+    <span class="inline-more-label">Why owning the fan experience is the structural data advantage</span>
+    <span class="inline-more-btn">+</span>
+  </div>
+  <div class="inline-deep">
+    <p class="body-text">Owning the fan experience is what generates the behavioral data advantage. Most platforms try to build a data layer and attach experiences to it. Openstage inverts this. By building around fan experiences first, Openstage naturally owns more surfaces and touchpoints than any competitor. More touchpoints means more behavioral data captured. Better data makes every subsequent experience smarter and more personalized. Smarter experiences deepen the relationship. Deeper relationships generate more data. The loop compounds.</p>
+    <p class="body-text">This is why competitors who bolt on data capabilities are starting from the wrong end. You cannot build fan-aware experiences without first being present at the moments that make a fan. Openstage is present at all of them. That presence is what makes the behavioral data richer and more complete than anything a point solution can produce. The experience layer and the data layer are not two separate things. One produces the other. That is the moat.</p>
+  </div>
+  <div class="expand-row" onclick="toggleSection(this)">
+    <span class="expand-label">Six differentiators: full detail</span>
+    <span class="expand-btn">+</span>
+  </div>
+  <div class="section-deep">
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">1. Fan identity as infrastructure, not a tool</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">The fan data platform is the rails everything else runs on. The Manager API, Webhooks, and MCP server make that data layer open and portable by design. Fan records move in real time to any external system, data warehouse, or AI assistant the artist or their team uses. That openness is structural, not a feature. Every experience, every reward, every campaign is powered by the same underlying fan identity. It is what makes Openstage the operating system for the artist-fan relationship, not another point solution in a stack that does not talk to itself.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">2. Inside-Out Philosophy and Approach</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">Most platforms are built for outside-in: create for the algorithm, chase attention, start from zero every cycle. Openstage inverts this. Start with the fans you already have. Go deep. Let that depth become visible. Let visible fandom pull new fans in without paid acquisition or platform dependency. This is a named, teachable framework baked into the product. When it clicks for an artist or manager, it does not feel like a sales pitch. It feels like someone finally got it right. No competitor can replicate that reaction because none of them have a thesis.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">3. Relationships over Revenue</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">The inside-out model produces a commercial outcome that no transaction-first competitor can match. Artists who segment and personalize see 4x engagement and revenue compared to send-to-all. Depth of relationship drives depth of spend. The data proves it. Build the relationship first. The monetization follows. At the very least, when people think about the best solution for audience development needs, Openstage should be the clear answer.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">4. Native music plus full-funnel logic</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">Generic CDPs are not built for this industry. Music-native point solutions own one moment in the fan lifecycle. Openstage is the only platform that is both music-native and full-funnel: fan acquisition through fan monetization, with a connected data layer in between. No other platform was built for the specific dynamics of how music fans behave, how artist careers develop, and how fandom compounds over time.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">5. Fan Graph as the single source of truth</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body"><p class="body-text">Every release, every tour, every campaign adds to the fan graph. It is the single source of truth for every fan relationship: who came to every show, bought every drop, and has been there from the start. No other platform sees the full picture. The profile is portable, getting richer with every interaction, and it belongs to the artist wherever they take it. The Manager API and Webhooks make that portability real and programmable: fan data moves to any external system in real time, on the artist's terms. It becomes more complete and more valuable every day they stay. That is the compounding asset no competitor can replicate from a standing start.</p></div>
+    </div>
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">6. Platform and partner, not platform or partner</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">Most platforms in this category are software businesses. They build the tool and expect teams to figure out the rest. Openstage is positioning itself differently: as the only platform in music that combines product with a dedicated audience development practice. That distinction matters because the market is full of artists and managers who understand the value of what Openstage offers but do not have the internal capacity to execute on it. The platform solves half the problem. The partner solves the other half. Together they make Openstage categorically different from every other option in the market, not just a better version of the same thing. When people think about Openstage, the goal is that they never think of it as just a tool. They think of it as the team behind the tool. That is a positioning no competitor can claim without building what we have already built.</p>
+      </div>
+    </div>
+    <p class="body-text" style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">The category is world-building. The position is build your world. The framework is inside-out. Together they form a position no competitor currently occupies and none can reach quickly. The 2.0 moment is when Openstage makes that position unmistakable.</p>
+  </div>
+</div>
+
+<!-- 05 BRAND -->
+<div class="section-block" id="brand">
+  <div class="section-header">
+    <span class="section-num">5</span>
+    <span class="section-title">Brand Positioning</span>
+    <span class="section-tagline">Open stage. Open data. Open infrastructure.</span>
+  </div>
+  <div class="section-surface">
+    <p class="surface-text">The category is world-building. The position is build your world. The front end is the proof. The fan data is the moat. The inside-out model is the framework. The roster earns the room. When the name, the positioning, and the visual language click, the brand does not need to announce itself. It is unmistakably itself.</p>
+    <p class="surface-text">The competitive opportunity and strategy is clear. What follows defines who we need to be and how we need to show up: the brand identity that has to deliver it.</p>
+  </div>
+  <div class="inline-more" onclick="toggleInline(this)">
+    <span class="inline-more-label">The full brand vision</span>
+    <span class="inline-more-btn">+</span>
+  </div>
+  <div class="inline-deep">
+    <p class="body-text">Rebalance the music industry in favor of artists and fans. That is the vision. Everything else in this brief is in service of it.</p>
+    <p class="body-text">The artist-fan relationship is the most valuable and most underleveraged asset in music. Openstage exists to grow it. Not just for the artist. For the fan too. When artists know their fans, they can create better experiences for them. When fans get better experiences, they go deeper, stay longer, and become the artist's most powerful engine for growth. That is the dynamic Openstage is built to create and sustain. A healthier, more valuable relationship on both sides.</p>
+    <p class="body-text">Every competitor brand in the category is generic SaaS. Gradients, no personality, no cultural fluency, no signal that the product was built for this industry. They could be fintech or HR tech. Nothing about them says music. That visual genericness is a trust problem as much as an aesthetic one. Artists and managers evaluate platforms on how they look before they evaluate how they work. A brand that does not feel native to music cannot earn the trust of people who live inside it. That gap is Openstage's to own visually, the same way the inside-out model owns it strategically.</p>
+    <p class="body-text">The opportunity is the stage as a literal visual concept. The brand mark as a mask or cutout. The artist lives behind it. Openstage is the stage the artist stands on. The brand recedes and the artist becomes visible through it. The infrastructure steps back. The artist steps forward. That is the inside-out model expressed as a visual system.</p>
+    <p class="body-text">The platform is the stage. The artist is the show.</p>
+    <p class="body-text">The name does not need to be translated into the positioning. It already is the positioning.</p>
+    <div class="quote-line">Openstage = open stage = the stage is yours = build your world.</div>
+    <p class="body-text">World-building is not a creative leap from the brand name. It is the literal read of it. That is the lock and key moment the identity sprint is built to deliver: the name, the visual language, and the positioning so aligned that the meaning is immediate on first encounter. When it clicks, it does not feel like branding. It feels like truth.</p>
+    <p class="body-text">What artists gain when they build that world is not just a platform. It is freedom, autonomy, empowerment, infrastructure, support, and something that does not reset. For the first time, the relationship compounds in their favor.</p>
+    <p class="body-text">Lastly, the name also carries a second meaning that is equally intentional. Open is not just a stage. It is an architecture. The fan data an artist builds on Openstage is portable, connectable, and theirs permanently. It moves to any external system, integrates with any AI tool, and connects to any infrastructure the artist or their team already uses. Nothing is locked inside a platform the artist does not control.</p>
+    <p class="body-text">That openness is structural, not a feature. It is built into the foundation. The Manager API, Webhooks, and MCP server are the expression of it in product terms. But the principle is older than the technology: the world an artist builds here belongs to them, and it should work with everything else in their world.</p>
+    <div class="quote-line quote-plain">Open stage. Open data. Open infrastructure.</div>
+    <p class="body-text">The name feels like it was always intentional as the positioning. Now the product delivers all of it.</p>
+  </div>
+  <div class="expand-row" onclick="toggleSection(this)">
+    <span class="expand-label">Pillars, archetypes, opinions, filters, and all messaging frameworks</span>
+    <span class="expand-btn">+</span>
+  </div>
+  <div class="section-deep">
+
+    <div class="sub-section open">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Brand Pillars</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">A brand that owns this position does not behave like a platform. It behaves like a movement. That requires a specific kind of identity: one that is wise enough to be trusted, principled enough to be followed, passionate enough to inspire, and reliable enough to deliver. One that earns the room before it opens its mouth.</p>
+        <div class="card-grid">
+          <div class="card-item"><div class="card-title">Freedom</div><div class="card-body">Artists are free from algorithm dependency, platform gatekeeping, and starting from zero every cycle. The relationship they build is theirs.</div></div>
+          <div class="card-item"><div class="card-title">Autonomy and Agency</div><div class="card-body">Artists control the narrative, the experience, and the fan relationship. No intermediaries. No permission required. Fan data moves wherever the artist needs it.</div></div>
+          <div class="card-item"><div class="card-title">Empowerment</div><div class="card-body">The platform gives artists the tools, the data, and the infrastructure to act like a platform themselves. Build your world. You are the platform.</div></div>
+          <div class="card-item"><div class="card-title">Infrastructure</div><div class="card-body">Not a campaign tool. The operating system underneath everything, open by design. Compounds with every release, every tour, every interaction.</div></div>
+          <div class="card-item"><div class="card-title">Support</div><div class="card-body">The platform does the work. The team makes sure it works. Artists are not handed a product and left alone. Openstage is an end-to-end partner.</div></div>
+          <div class="card-item"><div class="card-title">Durability and Foundation</div><div class="card-body">Every fan who joins makes the data richer. Every interaction makes the next campaign smarter. The asset compounds. It does not reset.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Brand Archetypes</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <table class="doc-table">
+          <thead><tr><th>Archetype</th><th>What It Means for the Brand</th></tr></thead>
+          <tbody>
+            <tr><td><strong>The Vanguard</strong></td><td>First to see the opportunity. First to move on it. Not a follower of trends. A precursor to them.</td></tr>
+            <tr><td><strong>The Pioneering Category Creator</strong></td><td>Openstage named the game before anyone else was playing it. That is a specific kind of authority that is earned, not claimed.</td></tr>
+            <tr><td><strong>The Sage</strong></td><td>Wisdom, authority, and clarity without effort. The thinking is deep, the perspective is earned, the guidance is trustworthy. A sage does not shout.</td></tr>
+            <tr><td><strong>The Decoder</strong></td><td>Makes the complex obvious. The inside-out model is not complicated. It just had not been named clearly before. That is the brand's gift.</td></tr>
+            <tr><td><strong>The Truth Speaker</strong></td><td>Says what everyone else is thinking but nobody will say out loud. Not provocative. Just honest about what is broken and clear about what the better way looks like.</td></tr>
+            <tr><td><strong>The Egalitarian Disruptor</strong></td><td>Disruption in service of a more equitable artist-fan relationship. Fans are treated like they matter. The platform exists to rebalance power, not accumulate it.</td></tr>
+            <tr><td><strong>The Revolutionary Evangelist</strong></td><td>This is not just software. It is a rebalancing of the music industry in favor of artists and fans. The brand champions a movement, not a feature set.</td></tr>
+            <tr><td><strong>The Tireless Champion and Advocate</strong></td><td>Unconditionally in the corner of artists and fans. Every product decision, every service, every piece of communication is filtered through what is right for them.</td></tr>
+            <tr><td><strong>The Trusted Partner</strong></td><td>Not a software hand-off. An end-to-end partnership. The platform does the work. The team makes sure it works.</td></tr>
+            <tr><td><strong>For the People</strong></td><td>Built for artists and fans, not labels, not platforms, not promoters. The hierarchy is clear and it never changes.</td></tr>
+            <tr><td><strong>The Best Taste</strong></td><td>The roster earns the room. The brand reflects the standard of the artists who chose it.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Brand Opinions: For and Against</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">These are not the things Openstage says it believes. They are the things that drive every product decision, every creative choice, and every piece of communication. The difference matters.</p>
+        <table class="opinions-table">
+          <thead><tr><th>For</th><th>Against</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Artists should own the fan relationship. Not platforms.</strong></td><td>Platforms should own the relationship between artists and fans.</td></tr>
+            <tr><td><strong>A fan is not a customer. The distinction matters at the product level.</strong></td><td>Fan relationship management is just a rebranding of CRM.</td></tr>
+            <tr><td><strong>Build your world first. Everything else is downstream.</strong></td><td>Start with monetization. Relationships follow.</td></tr>
+            <tr><td><strong>One plus one equals two. Every time. Without the lottery.</strong></td><td>Algorithmic reach is a sustainable growth strategy.</td></tr>
+            <tr><td><strong>The best fan experiences start with the fans who already care.</strong></td><td>Spray and pray is how you grow an audience.</td></tr>
+            <tr><td><strong>Human curation and direct connection are the future.</strong></td><td>Platforms will always control the artist-fan relationship.</td></tr>
+            <tr><td><strong>The education is the differentiation.</strong></td><td>Simplifying the message means dumbing it down.</td></tr>
+            <tr><td><strong>Fans deserve to be treated like they matter.</strong></td><td>Fans are an audience to be optimized.</td></tr>
+          </tbody>
+        </table>
+        <p class="body-text">That is the brand. Not a platform that happens to have a point of view. A point of view that happens to have built a platform.</p>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Brand Filters</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">The lens that every decision gets run through. The following criteria apply to every brand expression, every visual choice, and every piece of communication.</p>
+        <ul class="filter-list">
+          <li><span>🔍</span><span>Does it feel native to music and culture? Not a tech platform that bolted into the music industry. It should feel like it could only ever have been built for this.</span></li>
+          <li><span>🔍</span><span>Does it feel future-oriented without falling into the SaaS trap? Technology powers the mission. It is not the mission. The reference point is culture, not software.</span></li>
+          <li><span>🔍</span><span>Does it look like a category leader that has already defined the game, knows it, and has built a visual system weighty enough to compound in recognition and authority? Not a challenger brand punching up.</span></li>
+          <li><span>🔍</span><span>Is it unique and immediately identifiable? Not a variation of what the category already looks like. Something that could only be Openstage.</span></li>
+          <li><span>🔍</span><span>Would it earn the trust of an artist manager with high aesthetic standards and an immediate BS detector? If it looks like anything they have seen before, it has already lost.</span></li>
+          <li><span>🔍</span><span>Would Paul McCartney, Radiohead, Bad Bunny, and Lana Del Rey all feel represented by this? Would their fans feel seen by it? Hold it against that standard.</span></li>
+          <li><span>🔍</span><span>Does it compel trust immediately? Before a word is read, before a feature is evaluated, does the visual language earn the room?</span></li>
+          <li><span>🔍</span><span>Is it consistent with the brand character: wise, principled, passionate, reliable? Does it lead without shouting? Authority through restraint, not volume.</span></li>
+          <li><span>🔍</span><span>Does it feel like infrastructure with weight and permanence? Something solid as the foundation that artists can build on.</span></li>
+          <li><span>🔍</span><span>Does it evoke the aspirational, expansive, creative energy of world-building? A place with momentum and gravitational pull. A world worth belonging to.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Messaging Frameworks</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+
+        <div class="fw-card">
+          <div class="fw-header" onclick="toggleFw(this)"><span class="fw-num">1</span><span class="fw-title">'Build your world.'</span><span class="fw-arrow">+</span></div>
+          <div class="fw-body">
+            <p class="body-text">The headline. The category. The intent. Everything ladders back to this. It is aspirational without being vague because the product delivers it literally. Use it to open every conversation, every piece of content, every campaign. It is the promise the rest of the messaging has to fulfill.</p>
+            <ul class="bullet-list">
+              <li><strong>For artists:</strong> You have spent years building someone else's platform. Every follower, every stream, every like belongs to them. Build your world means building something that belongs to you. A direct relationship with the people who care most. Something that does not reset.</li>
+              <li><strong>For managers:</strong> Your artists are working harder than ever and starting from zero every cycle. Build your world is the alternative. A compounding asset. A fan relationship that carries forward across every release, every tour, every campaign.</li>
+              <li><strong>For press / industry:</strong> The category is world-building. Not fan CRM. Not data analytics. A living, breathing fan ecosystem with momentum and gravitational pull. Openstage is the only platform built to deliver it.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fw-card">
+          <div class="fw-header" onclick="toggleFw(this)"><span class="fw-num">2</span><span class="fw-title">'Become your own platform, not someone else's.'</span><span class="fw-arrow">+</span></div>
+          <div class="fw-body">
+            <p class="body-text">The competitive argument made personal. This line does the diagnostic work. It names the problem without lecturing. Every artist who has watched their reach decline, paid to reach audiences they already built, or lost fans to a platform's algorithm will feel this immediately.</p>
+            <ul class="bullet-list">
+              <li><strong>For artists:</strong> Every time you post, you are building Instagram's world. Every stream builds Spotify's world. Become your own platform means the work compounds in your favor for the first time.</li>
+              <li><strong>For managers:</strong> The platforms your artists depend on are not working in their favor. The data belongs to someone else. The relationship belongs to the platform. This is the alternative.</li>
+              <li><strong>For press / industry:</strong> The shift from platform dependency to platform ownership is the defining artist rights story of this decade. Openstage is the infrastructure that makes it possible.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fw-card">
+          <div class="fw-header" onclick="toggleFw(this)"><span class="fw-num">3</span><span class="fw-title">'The stage is yours.'</span><span class="fw-arrow">+</span></div>
+          <div class="fw-body">
+            <p class="body-text">The identity line. Every other line is positioning. This one is identity. It connects the brand name to the brand promise in a single sentence without explaining itself. Openstage. Open stage. The stage is yours. It does not need to be translated. It already is the positioning. The lock and key moment is what makes this line irreplaceable. It should never be buried. It is the line that makes someone feel the brand before they evaluate the product. And it is the only line no competitor can ever claim. You cannot say the stage is yours without being called Openstage.</p>
+            <ul class="bullet-list">
+              <li><strong>For artists:</strong> Not the algorithm's stage. Not the platform's stage. Yours. The infrastructure steps back. You step forward.</li>
+              <li><strong>For fans:</strong> The artist you love is showing up for you directly. Not through a platform. Not through an algorithm. On their stage, in their world, on their terms.</li>
+              <li><strong>For press / industry:</strong> The name, the positioning, and the visual language are so aligned that the meaning is immediate. Openstage is the stage the artist stands on. The brand recedes. The artist steps forward.</li>
+              <li><strong>As the emotional close:</strong> After build your world establishes the aspiration and become your own platform names the problem, the stage is yours is the payoff. It lands the feeling. Use it to close a pitch, end a piece of content, or sign off a campaign.</li>
+              <li><strong>As the visual anchor:</strong> The stage as a literal metaphor, the brand mark as a mask or cutout, the artist stepping through it: the stage is yours is the line that makes that visual system coherent. Every brand expression traces back to it.</li>
+              <li><strong>As the fan-facing entry point:</strong> Artists build the world. Fans are invited into it. The stage is yours speaks to both. The artist owns the stage. The fan gets a front row seat. That duality is what makes it the most versatile line in the set.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fw-card">
+          <div class="fw-header" onclick="toggleFw(this)"><span class="fw-num">4</span><span class="fw-title">'Build your world. Open it to everything.'</span><span class="fw-arrow">+</span></div>
+          <div class="fw-body">
+            <p class="body-text">This is not a feature. It is the core of what Openstage is. Every other platform in the category holds the relationship hostage. The data lives inside their walls and disappears the moment an artist moves on. Dependency is the product.</p>
+            <p class="body-text">Openstage was built on the opposite conviction. The fan world an artist builds here is theirs permanently. The data does not reset. It does not stay locked inside a single product. It moves wherever they need it to go, connects to every tool they already use, and gets richer with every interaction. The Manager API, Webhooks, and MCP server mean fan data flows in real time to any external system, and that Claude and ChatGPT can talk directly to the fan record without the artist ever leaving their workflow.</p>
+            <p class="body-text">The world the artist builds here works everywhere. That is the point. That is the moat. Not for Openstage. For the artist.</p>
+            <ul class="bullet-list">
+              <li><strong>For artists:</strong> The fans you build here belong to you. The data travels with you. The AI tools you already use can talk directly to your fan data without you ever leaving your workflow.</li>
+              <li><strong>For managers:</strong> Your artists' fan records are portable, connectable, and permanently owned. As your infrastructure evolves, Openstage evolves with it. One integration connects the fan data layer to everything else your operation runs on.</li>
+              <li><strong>For enterprise:</strong> Your organization has already decided on an AI stack. Openstage is the fan data layer that feeds it. The Manager API and MCP server connect directly to your internal systems, in real time, on your terms.</li>
+              <li><strong>For press / industry:</strong> Open stage. Open data. Open infrastructure. The name was always the positioning. The platform now delivers all of it.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fw-card">
+          <div class="fw-header" onclick="toggleFw(this)"><span class="fw-num">5</span><span class="fw-title">'Openstage is the operating system that artists use to deliver better fan experiences powered by their fan data to grow fandom.'</span><span class="fw-arrow">+</span></div>
+          <div class="fw-body">
+            <p class="body-text">The functional definition. Not a tagline. The one-sentence answer to what Openstage actually does. Use it when the room needs specificity after the aspiration has landed. It earns its place in investor conversations, press briefings, and sales decks.</p>
+            <ul class="bullet-list">
+              <li><strong>Operating system:</strong> not a tool, not a feature, not a campaign platform. The infrastructure underneath everything.</li>
+              <li><strong>Better fan experiences:</strong> the product philosophy. Experience first, data second. The experience generates the data.</li>
+              <li><strong>Powered by fan data:</strong> the behavioral layer that makes every experience smarter than the last.</li>
+              <li><strong>Grow fandom:</strong> the outcome. Not just engagement. Not just revenue. Fandom. A deeper, more durable relationship between artist and fan.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fw-card">
+          <div class="fw-header" onclick="toggleFw(this)"><span class="fw-num">6</span><span class="fw-title">'Know, reach, recognize, and reward fans directly.'</span><span class="fw-arrow">+</span></div>
+          <div class="fw-body">
+            <p class="body-text">The product promise broken into four verbs. Each one is a category in itself. Together they describe the complete fan relationship lifecycle that no competitor covers end to end.</p>
+            <ul class="bullet-list">
+              <li><strong>Know:</strong> Fan Graph. A complete, portable, compounding picture of every fan across every touchpoint. Who they are, what they have done, how deep they go.</li>
+              <li><strong>Reach:</strong> Direct communication across every channel. Email, SMS, web, app. Unlimited sends. No algorithm between the artist and the people who chose to show up.</li>
+              <li><strong>Recognize:</strong> Fan-aware experiences that treat fans as individuals, not an audience. The fan who has been there since the beginning gets treated differently than someone who discovered the artist yesterday.</li>
+              <li><strong>Reward:</strong> Access, exclusives, loyalty perks tied to real fan behavior. Not generic offers. Recognition that reflects what fans have actually given.</li>
+            </ul>
+            <p class="body-text">For sales use: Walk a prospect through these four verbs in a demo. Each one maps to a capability. Together they make the case that Openstage is the only platform that covers the full relationship, not just one moment in it.</p>
+          </div>
+        </div>
+
+        <div class="fw-card">
+          <div class="fw-header" onclick="toggleFw(this)"><span class="fw-num">7</span><span class="fw-title">'The biggest artists in the world have the strongest relationships with their fans. That's why they choose Openstage.'</span><span class="fw-arrow">+</span></div>
+          <div class="fw-body">
+            <p class="body-text">The roster line. Every other line in this set is a promise. This one is proof. It reframes the roster not as a feature but as validation that the thesis is correct. The artists who have built sustainable careers at the highest level have one thing in common: they treat the fan relationship as the asset. Openstage is the infrastructure they chose to build it on.</p>
+            <p class="body-text">It works in three parts and each part does a distinct job. The biggest artists in the world have the strongest relationships with their fans names the pattern. It is an observable truth that requires no argument. They understand the value of building and owning those relationships names the belief. That is why they choose Openstage is the close.</p>
+            <ul class="bullet-list">
+              <li><strong>For artists:</strong> The artists you admire most are not leaving it to the algorithm. They are building direct. They know their fans, reach them directly, and recognize the ones who have been there from the start. That is not a coincidence. That is a choice. Openstage is the platform they made it on. You are in good company. And the world you build here belongs to you.</li>
+              <li><strong>For managers:</strong> Your peers managing the biggest careers in music are choosing Openstage because they understand what the fan relationship is actually worth. The roster is the proof. The question is not whether this is the right approach. The question is when you are ready to start.</li>
+              <li><strong>For press / industry:</strong> The strongest artist careers are built on the strongest fan relationships. The shift from audience to fanbase, from reach to relationship, from platform dependency to platform ownership, is not theoretical. The category is world-building. The platform is Openstage. The proof is the roster.</li>
+              <li><strong>As the emotional close:</strong> Use this line to end a pitch, anchor a case study, or close a campaign built around roster proof points. After build your world establishes the aspiration and the inside-out model provides the framework, the roster line makes it real. It is the moment the promise becomes credible.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 06 GTM -->
+<div class="section-block" id="gtm">
+  <div class="section-header">
+    <span class="section-num">6</span>
+    <span class="section-title">GTM Strategy</span>
+    <span class="section-tagline">Where to play. How to win. Five things to nail.</span>
+  </div>
+  <div class="section-surface">
+    <p class="surface-text">Professional artists and their teams at a mid-to-major level. Managers who want a trusted partner, not another tool to figure out alone. Artists at major inflection points like releases and tours. Labels and A&R evaluating real audience depth. Artists ready to stop renting and start owning. The market moment makes that last group larger than it has ever been.</p>
+    <p class="surface-text">Win on the lock and key moment. Name, positioning, and visual language so aligned that the meaning is immediate on first encounter. Let the roster do the credibility work. The proof earns the room before a word is spoken. Lead with aspiration, not capability. Build your world lands immediately. Fan CRM requires explanation. Explanation is friction. Own world-building as the category now, before any competitor understands what the category is. Direct to fan has consensus but no clear infrastructure. That window will not stay open. Make the front end the primary wedge in every demo. The most visceral and immediate proof of the category distinction.</p>
+  </div>
+  <div class="expand-row" onclick="toggleSection(this)">
+    <span class="expand-label">Full how-to-win list, five things to nail, awareness model, positioning, channel orchestration</span>
+    <span class="expand-btn">+</span>
+  </div>
+  <div class="section-deep">
+
+    <div class="sub-section open">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">How to Win</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <ul class="win-list">
+          <li><div class="win-head">Win on the lock and key moment.</div><div class="win-body">Name, positioning, and visual language so aligned that the meaning is immediate on first encounter.</div></li>
+          <li><div class="win-head">Let the roster do the credibility work.</div><div class="win-body">The proof earns the room before a word is spoken.</div></li>
+          <li><div class="win-head">Lead with aspiration, not capability.</div><div class="win-body">Build your world lands immediately. Fan CRM requires explanation. Explanation is friction.</div></li>
+          <li><div class="win-head">Own world-building as the category now.</div><div class="win-body">Direct to fan has consensus but no clear infrastructure. That window will not stay open.</div></li>
+          <li><div class="win-head">Make the front end the primary wedge in every demo.</div><div class="win-body">The most visceral and immediate proof of the category distinction.</div></li>
+          <li><div class="win-head">Position on philosophy, not features.</div><div class="win-body">The inside-out model cannot be copied in a sprint. Lead every conversation with the framework, not the functionality. When it clicks, the product sells itself. Unlimited email sends, forever, free is the clearest answer when the room asks. We do not lead with features. But we have answers that close.</div></li>
+          <li><div class="win-head">Make the Fan Graph the answer to every question.</div><div class="win-body">Ticket pre-sales. Merch targeting. Knowing who the real fans are. Whatever the artist cares about most, the Fan Graph is the answer. That connection has to be immediate and repeatable across every surface and every conversation.</div></li>
+          <li><div class="win-head">Make the efficacy argument explicit.</div><div class="win-body">Organic reach on social is under 10% and falling. Every platform that owns the relationship eventually charges the artist to access it. The work does not compound. Every cycle starts from zero. Openstage changes the math. Every fan who joins is a direct, owned contact. Post to them and it reaches them. Every time.</div></li>
+          <li><div class="win-head">Position the Fan Graph as the long-term reason to commit.</div><div class="win-body">The longer an artist builds on Openstage, the more complete and irreplaceable that asset becomes. The moat made tangible.</div></li>
+          <li><div class="win-head">Lead with open as the enterprise argument.</div><div class="win-body">Labels, management companies, and enterprise partners are making AI stack decisions now. Openstage is not asking enterprise to replace their stack. It is asking to be the fan data layer underneath it. The Manager API, Webhooks, and MCP server make that real. That is a different conversation than any competitor is having.</div></li>
+          <li><div class="win-head">Use Artist Services as the on-ramp.</div><div class="win-body">Removes the single biggest blocker in the market and positions Openstage as the trusted partner, not another tool to figure out alone.</div></li>
+          <li><div class="win-head">Target managers as the multiplier.</div><div class="win-body">A single manager win is a roster win. Managers who adopt the inside-out model bring it to every artist they work with and every manager in their network. The highest-leverage entry point in the market.</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Five Things This GTM Has to Nail</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <ol class="num-list">
+          <li><strong>Make the problem undeniable before introducing the solution.</strong> Artists are in different stages of awareness. Many feel the frustration but have not yet made it structural. The GTM has to do the diagnostic work first. The inside-out model is the tool. It reframes a personal problem as a structural one and makes the solution a natural leap rather than a sales pitch.</li>
+          <li><strong>Inspire around the world they are building by speaking to outcomes.</strong> Artists do not buy software. They buy a vision of what their career could look like. Every conversation, every piece of content, and every demo has to answer the question they are actually asking: what does my world look like when this is working? Build your world is not a tagline. It is the promise the entire GTM has to deliver on. Lead with what becomes possible. The product is the proof.</li>
+          <li><strong>Own the vocabulary.</strong> World-building, not fan CRM. Audience development, not data management. Fan relationships, not contact records. When the industry starts using these terms without attribution, the category is won.</li>
+          <li><strong>Lower the perceived barrier to entry.</strong> The biggest risk is a prospect who gets it, wants it, and still does not know how to begin. Artist Services is the on-ramp for teams that need a partner to run point. The Learning Academy is the on-ramp for everyone else. A library of videos that make the product, its capabilities, and the thinking behind it fully accessible without requiring a sales call or a dedicated resource. The goal is to make audience development feel decoded, not daunting. Self-serve starts here.</li>
+          <li><strong>Earn trust visually before earning it intellectually.</strong> Artists and managers with high aesthetic standards evaluate platforms on how they look before they evaluate how they work. The brand has to feel music-native before a word is read.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">The Awareness Model</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <table class="doc-table">
+          <thead><tr><th>Stage</th><th>Where They Are</th><th>Our Job</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Problem Unawareness</strong></td><td>Working hard, feeling the frustration, but cannot name the cause. Releases underperform. Touring feels like starting over. Social following grows but converts to nothing. They blame the algorithm, bad timing, the market. They do not yet see that the problem is structural: they do not own their fan relationships and have no way to act on them.</td><td>Name the pain they already feel. Make it structural, not personal.</td></tr>
+            <tr><td><strong>2. Problem Awareness</strong></td><td>The artist understands the platforms they depend on are not working in their favor. The data belongs to Spotify, Instagram, TikTok. They know their fans exist but cannot reach them directly. Every cycle starts from zero because nothing carries forward. They are ready for a better way but do not know what it looks like.</td><td>Validate the diagnosis. Give them the language. The inside-out model does this. The Bills of Rights do this.</td></tr>
+            <tr><td><strong>3. Solution Unawareness</strong></td><td>They know something needs to change but do not know what to do about it. Fan CRM feels complicated, expensive, and like more work on top of an already overwhelming operation. They assume it requires a dedicated person, a big budget, or technical sophistication their team does not have. The solution exists but feels out of reach.</td><td>Lower the perceived barrier. Decode audience development. Make the category feel accessible, not intimidating. Artist Services is the answer for high-value accounts.</td></tr>
+            <tr><td><strong>4. Solution Awareness</strong></td><td>The artist understands that Openstage is the infrastructure for what they already want to do. Build a world. Own the relationship. Make every fan count. It does not require a data scientist or a new hire. It requires the right platform and the right partner.</td><td>Make the leap from problem to solution feel natural, not sold. The inside-out model is the bridge. World-building is the destination. The demo closes it.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">What This Means for Positioning</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">Lead with the problem, not the product. Every piece of content, every outreach, every demo should start where the artist already is: frustrated, uncertain, starting from zero. Walk them through the diagnosis. Give them the framework. Let the solution emerge from the argument rather than being announced at the top.</p>
+        <p class="body-text">The category name matters. World-building, not fan CRM. Audience development, not data management. Fan relationships, not contact records. The language has to feel like music, not software.</p>
+        <p class="body-text">And the on-ramp has to be obvious. Self-serve for artists who are ready to move. Artist Services for teams who know they need help but do not know where to start. The biggest GTM risk is a prospect who gets it, wants it, and still does not know how to begin.</p>
+        <p class="body-text">The approach is pull, not push. Earned and owned establish the category. The roster validates it. The content educates the market before the product is evaluated. Artist Services removes the biggest blocker. PLG scales what the high-touch motion proves. Paid amplifies what organic has already established. The sequence matters as much as the channels.</p>
+        <p class="body-text">The primary motion is inbound driven by thought leadership and category creation. Every piece of content, every press conversation, every social post is designed to make artists and managers feel like they found something. Not like they were sold something. That feeling is what creates inbound. That inbound is what creates pipeline. That pipeline is what creates revenue.</p>
+        <p class="body-text">The secondary motion is outbound: high-touch, personal, and targeted. Direct outreach to existing roster artists, target accounts, managers, and labels. Not a spray and pray campaign. Specific conversations with specific people about specific opportunities. Legendary plan and Artist Services are the primary commercial levers in the outbound motion.</p>
+        <p class="body-text">The tertiary motion is PLG. Self-serve launches shortly after the brand relaunch. The video library and onboarding flow must be fully ready before activating. PLG expands the addressable market without requiring high-touch sales resources.</p>
+        <table class="doc-table">
+          <thead><tr><th>Motion</th><th>How It Works</th><th>Primary Lever</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Inbound</strong></td><td>Thought leadership and content create the category and educate the market. Artists and managers find Openstage because the ideas found them first.</td><td>Inside-out model, world-building thesis, Fan and Artist Bills of Rights, vocabulary ownership.</td></tr>
+            <tr><td><strong>Outbound</strong></td><td>Direct, personal, high-touch outreach to target accounts. Warm conversations with existing roster artists and managers about Legendary and Artist Services.</td><td>Artist Services and Legendary plan as the commercial entry points.</td></tr>
+            <tr><td><strong>PLG</strong></td><td>Self-serve flow converts inbound interest into Build plan signups without sales involvement. Scales the funnel without scaling the team.</td><td>Video library and onboarding sequence. Activated after brand relaunch is established.</td></tr>
+            <tr><td><strong>Paid</strong></td><td>Amplifies organic signals. Retargets warm audiences. Not a primary acquisition channel. Activated after earned and owned have established the brand.</td><td>Paid social and retargeting only. No broad acquisition spend at launch.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Channel Orchestration</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">All channels activate at launch. The sequencing principle is earned and owned first, paid last. The brand needs to establish itself through credibility before it amplifies through paid reach. Activating paid before organic signals are clear risks spending to reinforce a perception that has not yet formed.</p>
+        <table class="doc-table">
+          <thead><tr><th>Channel</th><th>Role at Launch</th><th>Strategic Rationale</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td><strong>PR / Press</strong></td><td>Earned credibility and category framing. The inside-out model and Bills of Rights as the story. Music industry trade press and music tech publications.</td><td>Press creates the social proof that makes every other channel more effective. Artists and managers evaluate platforms on industry reputation before they evaluate features. A strong press moment at launch changes the conversation in every sales room that follows.</td><td><span class="tag-high">High</span></td></tr>
+            <tr><td><strong>Content / Thought leadership</strong></td><td>Own the vocabulary. Educate the market. Inside-out model, world-building, fan-led growth as the editorial pillars. All existing content updated to reflect 2.0 positioning at launch.</td><td>Content is the primary competitive weapon and the primary inbound driver. It compounds over time in a way no other channel does. Every piece published makes the next piece more authoritative. The goal is to become the reference for how the industry thinks about the artist-fan relationship.</td><td><span class="tag-high">High</span></td></tr>
+            <tr><td><strong>Video library</strong></td><td>Flatten the learning curve for self-serve. Support Artist Services onboarding. Jobs-to-be-done mapped to specific tutorials. Lives on site and YouTube.</td><td>The video library is a GTM asset as much as a product asset. It reduces friction for self-serve conversion, accelerates Artist Services onboarding, and demonstrates product depth in a format that converts better than copy alone. It is also the content that travels furthest on YouTube over time.</td><td><span class="tag-high">High</span></td></tr>
+            <tr><td><strong>Artist outreach / direct</strong></td><td>High-touch pipeline for Legendary and Artist Services conversations. Warm, personal outreach to existing roster and target accounts tied to the 2.0 moment.</td><td>High-touch outreach to the right accounts at the right moment is the highest-conversion motion in the commercial stack. The 2.0 relaunch gives the team a natural reason to reach out that is not a sales call. Use it.</td><td><span class="tag-high">High</span></td></tr>
+            <tr><td><strong>Social</strong></td><td>Amplify proof points and reinforce brand. Artist-forward content. Inside-out model as a repeatable editorial frame. Fan-facing content reinforces both sides of the relationship.</td><td>Social is the amplification layer for everything else. It is not the primary acquisition channel but it is the channel that makes the brand feel alive and present. Artist stories, Bills of Rights content, inside-out model explainers, and fan proof points are the social content pillars.</td><td><span class="tag-med">Medium</span></td></tr>
+            <tr><td><strong>Email / CRM</strong></td><td>Activate the existing base by segment. Build plan customers receive relaunch plus upgrade path. Prospects receive relaunch plus demo CTA. Legendary customers receive white-glove announcement.</td><td>The existing base is the warmest audience in the funnel. The relaunch is the best possible reason to re-engage every prospect and customer simultaneously. Segmentation ensures the right message hits the right person at the right moment.</td><td><span class="tag-med">Medium</span></td></tr>
+            <tr><td><strong>Partnerships / industry</strong></td><td>Extend reach into management and label communities through industry associations and conference presence timed to the relaunch.</td><td>Industry partnerships create reach into communities that are not reachable through owned channels. Management companies, industry associations, and conference presence put Openstage in the room with the right buyers at the right moment.</td><td><span class="tag-med">Medium</span></td></tr>
+            <tr><td><strong>Paid</strong></td><td>Amplify high-performing organic content and retarget warm audiences only. Not a primary acquisition channel at launch. Activate after organic signals are established.</td><td>Paid works best when it amplifies a message that has already proven it resonates organically. Activating paid before organic signals are clear means spending to establish a brand that has not yet earned its position. Let earned and owned lead. Paid follows.</td><td><span class="tag-low">Low</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 07 RELAUNCH -->
+<div class="section-block" id="relaunch">
+  <div class="section-header">
+    <span class="section-num">7</span>
+    <span class="section-title">The 2.0 Relaunch</span>
+    <span class="section-tagline">Early July. Hearts and minds first. Everything else follows.</span>
+  </div>
+  <div class="section-surface">
+    <p class="surface-text">Openstage has real product, a differentiated point of view, and a roster that earns the room before a word is spoken. None of it is showing up in market at the quality level it deserves. The identity feels louder than it is thoughtful. The visual system lacks consistency. It undersells what has been built.</p>
+    <p class="surface-text">The 2.0 relaunch closes that gap. New brand identity. New website. New content strategy. New products and features. Everything hitting together in early July. The goal is not to announce a refresh. It is to give people a reason to look at Openstage differently, literally and figuratively. A brand and product experience that matches the ambition and reflects what the offering actually is.</p>
+    <p class="surface-text">This is not just a visual upgrade. It is the moment Openstage stakes the category, owns the vocabulary, and makes the differentiation unmistakable across every surface. The perception gap between what Openstage can do and how it presents in market is the single biggest drag on growth right now. Every conversation that should be easy is harder than it needs to be because the brand does not do justice to the product. The 2.0 moment fixes that.</p>
+    <p class="surface-text">The primary objective of the 2.0 relaunch is hearts and minds. Everything else flows from it. Win the hearts and minds of artists, fans, and the broader music industry and traffic, sentiment, pipeline, and conversions follow. Lose them and no amount of channel spend recovers it. This launch is designed to make artists feel like Openstage was built for them, make fans feel like someone finally stood up for them, and make the industry feel like the category just got defined. Traffic and pipeline are the commercial output of that. They are not the goal. Hearts and minds is the goal.</p>
+  </div>
+  <div class="expand-row" onclick="toggleSection(this)">
+    <span class="expand-label">Objectives, who it speaks to, launch sequence, workstreams, content, campaign tiers, success metrics</span>
+    <span class="expand-btn">+</span>
+  </div>
+  <div class="section-deep">
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Objectives and How We Know They Landed</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <table class="doc-table">
+          <thead><tr><th>Objective</th><th>What It Means</th><th>How We Know It Landed</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Hearts and minds</strong></td><td>Artists, fans, and the music industry feel the brand before they evaluate the product. The positioning resonates on an emotional and aspirational level. The point of view is clear and compelling enough to create advocates before the demo.</td><td>Artists and managers say they finally found something, not that they were sold something. The Bills of Rights get shared organically. Industry voices reference Openstage's framework unprompted.</td></tr>
+            <tr><td><strong>Brand perception shift</strong></td><td>The gap between product quality and brand presentation closes. The 2.0 identity matches the ambition and earns immediate trust from a high-aesthetic audience.</td><td>First impression changes in demos and direct outreach. The brand no longer undersells the product. Artists feel pride in being on the platform.</td></tr>
+            <tr><td><strong>Category ownership</strong></td><td>Openstage is synonymous with world-building and the inside-out model. The vocabulary becomes the industry standard.</td><td>Press and industry voices use the terms without attribution. Competitors start positioning relative to the category Openstage defined.</td></tr>
+            <tr><td><strong>Traffic and engagement</strong></td><td>Meaningful increase in organic and direct traffic. Content drives qualified inbound. The site converts.</td><td>Organic traffic up. Time on site up. Content page views compound week over week post-launch.</td></tr>
+            <tr><td><strong>Pipeline</strong></td><td>Demo requests, Artist Services inquiries, and Legendary plan conversations generated from launch activity.</td><td>Pipeline volume increases meaningfully in the four weeks following launch.</td></tr>
+            <tr><td><strong>Conversion</strong></td><td>Build plan signups, Legendary upgrades, and Artist Services engagements attributable to the relaunch window.</td><td>Revenue from new sources created by the relaunch within the first 60 days.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Who It Speaks To</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">The relaunch speaks to both sides of the artist-fan relationship simultaneously. That is intentional and it is the strategic differentiator. Most platforms speak to one side. Openstage is the infrastructure for the relationship between both. The brand has to reflect that.</p>
+        <p class="body-text">For artists, the message is build your world. You are the platform. Stop building someone else's. The relaunch gives artists a new language for something they already feel: the platforms they built careers on are working against them. The algorithm is a rigged lottery. The data belongs to someone else. The relationship belongs to the platform. Artists and managers know something is structurally broken. They do not yet have the language to name it. Openstage gives them that language and the infrastructure to act on it.</p>
+        <p class="body-text">For fans, the message is that they deserve better. They have been showing up for years. They buy the merch, the tickets, the exclusives. They stream on repeat. The artist has no idea they exist as individuals. They compete with bots for tickets. They receive the same generic email as someone who discovered the artist yesterday. There is no record of what they have given and no recognition of what they have earned. The Fan Bill of Rights is the public declaration that this is wrong, that fans deserve better, and that Openstage is the infrastructure built to change it.</p>
+        <p class="body-text">Speaking to both sides is not just the right thing to do. It is the growth strategy. When fans feel seen by the brand, they become advocates for the platform. When artists see fans responding to the Openstage message, it validates the platform in a way no sales conversation can replicate. The inside-out model applied to the brand itself: start with the people who already care, superserve them, and let that depth become visible.</p>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Launch Sequence</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">The sequence matters as much as the channels. Every phase has a job. Pre-launch creates the conditions for the launch to land. Launch creates the moment. Activation converts the moment into pipeline. PLG scales what the moment proved.</p>
+        <table class="doc-table">
+          <thead><tr><th>Phase</th><th>Timing</th><th>Focus</th><th>Key Actions</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Pre-launch</strong></td><td>4 weeks out</td><td>Internal alignment. Asset readiness. Press seeding.</td><td>All teams briefed on messaging and positioning. No freelancing on vocabulary or category framing. Press pre-briefed under embargo with the inside-out model and Bills of Rights as the packaged story. Artist Services ready to sell. Video library complete and QA'd. Site QA complete. Existing customers notified of the relaunch. Fan and Artist Bills of Rights finalized and designed. AI capabilities ships in June as a separate beat ahead of the full 2.0 relaunch to set up the open platform narrative before the brand fully lands.</td></tr>
+            <tr><td><strong>Launch</strong></td><td>Early July</td><td>Brand goes live. PR breaks. All channels activate simultaneously.</td><td>New site and brand go live. PR embargo lifts. Social campaign launches. Email goes to full segmented base. Direct artist outreach begins. Legendary plan promoted. Content calendar activates. Fan and Artist Bills of Rights published as standalone documents with their own visual treatment.</td></tr>
+            <tr><td><strong>Activation</strong></td><td>Weeks 2 to 4</td><td>Convert launch momentum into pipeline.</td><td>Demo follow-up cadence runs on every inbound lead. Artist Services conversations deepen with warm accounts. Content publishing sustains at launch cadence. PR follow-through continues with secondary placements. Community and social engagement active. Measure signal against success metrics weekly.</td></tr>
+            <tr><td><strong>PLG launch</strong></td><td>Shortly after brand launch</td><td>Expand addressable market.</td><td>Self-serve signup flow live. Onboarding sequence active. Video library supports activation at scale. PLG funnel tracked and optimized continuously. Paid activated to amplify highest-performing organic content.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Workstreams</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card-item"><div class="card-title">New Brand Identity</div><div class="card-body">Full visual system: logo, typography, color, motion, photography, product UI. Closes the perception gap. Delivers the lock and key moment. Makes the brand match the product quality and ambition for the first time.</div></div>
+          <div class="card-item"><div class="card-title">New Website</div><div class="card-body">Rebuilt site with content strategy and IA organized around the inside-out model and positioning. Primary conversion surface for every channel. Has to earn trust immediately, communicate the category position, and convert.</div></div>
+          <div class="card-item"><div class="card-title">New Product Design</div><div class="card-body">Implementation of the new brand identity and visual design system across the full product UI. Every surface updated to reflect the 2.0 positioning. The product experience has to match the brand promise before a feature is evaluated.</div></div>
+          <div class="card-item"><div class="card-title">Video Library</div><div class="card-body">Product tutorial videos mapped to jobs to be done across the full capability set. Flattens the learning curve for self-serve. Supports Artist Services onboarding. Demonstrates product depth in a format that converts better than copy alone.</div></div>
+          <div class="card-item"><div class="card-title">Artist Services</div><div class="card-body">Formal productized offering: Onboarding, Audience Development, Campaign Management. Directly addresses the biggest market blocker. Differentiates from every competitor. Creates a new revenue line.</div></div>
+          <div class="card-item"><div class="card-title">PLG Motion</div><div class="card-body">Self-serve signup flow launching shortly after the brand relaunch. Expands the addressable market beyond high-touch sales. Requires video library and onboarding flow to be fully ready before activating.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Content Strategy and Flagship Assets</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">Practice what we preach with the inside-out model on our own narrative. Start with the people who already care. Build Openstage's world the same way we teach artists to build theirs. The content strategy is not a support layer for the brand relaunch. It is the substance of it.</p>
+        <p class="body-text">The goal is thought leadership so bold and compelling that it attracts and finds its own audience, inspires evangelism, and endears prospects to the brand before they ever see the product. When someone reads an Openstage piece of content and the inside-out model clicks, that is the moment. Content that makes people feel like they finally found someone who gets it. That feeling creates sharing. Sharing builds the brand. The brand compounds the same way a fan graph does.</p>
+        <p class="body-text">Content is also the primary competitive weapon. Laylo, Rivet, and Co:brand have no equivalent point of view. They are tools. They do not have a thesis. Openstage does. Publishing that thesis clearly and consistently is how the category gets won before the product is ever evaluated.</p>
+        <table class="doc-table">
+          <thead><tr><th>Asset</th><th>What It Is</th><th>Why It Matters</th></tr></thead>
+          <tbody>
+            <tr><td><strong>The Inside-Out Model</strong></td><td>The definitive published framework for how artists build durable careers. The full argument: outside-in failure, inside-out inversion, the three stages, fan-led growth, the compounding asset. Long-form, fully developed, designed to be the reference document for the category.</td><td>The biggest one. The intellectual flag in the ground. The thing that gets cited, shared, and traced back to Openstage. No competitor has published a point of view this clear. This is the content that makes managers forward it to their entire roster.</td></tr>
+            <tr><td><strong>World-Building</strong></td><td>The category thesis published as long-form thought leadership. What world-building is, why it is the only uncontestable frame for the artist-fan relationship, and why it is where the industry is going.</td><td>The category claim made public before any competitor understands what the category is. Defines the game on Openstage's terms. Every press conversation, every podcast appearance, every social post ladders back to this.</td></tr>
+            <tr><td><strong>Fan Bill of Rights</strong></td><td>A public declaration of the ten things fans have earned and rarely received. Published with its own visual treatment. A standalone document with weight. Not a blog post.</td><td>The emotional asset. Speaks to fans directly and immediately. Designed to travel far beyond the Openstage brand. Artists share it because it reflects their values. Fans share it because it names their experience. Press covers it because it is a genuine point of view with real stakes, not a product announcement.</td></tr>
+            <tr><td><strong>Artist Bill of Rights</strong></td><td>The mirror asset. A public declaration of what artists have earned and rarely had. Ownership of their fan relationships. Independence from platform gatekeeping. Data that belongs to them. Recognition from the industry that the current model is broken.</td><td>Pairs with the Fan Bill of Rights as a suite. The two together make the case that Openstage is not just a platform. It is a stand for a fundamentally different music industry. Designed to generate artist endorsement and press coverage simultaneously.</td></tr>
+            <tr><td><strong>AI / Infra Approach</strong></td><td>Product launch content suite for Rosa, MCP, Manager API, and Webhooks. Announces the open platform capabilities and the AI layer across owned channels, email, and social. Separate beat from 2.0 brand relaunch but directly reinforces the open platform thesis.</td><td>Demonstrates the open platform positioning in concrete product terms before the 2.0 moment. Every piece of launch content feeds back into the category argument and the fan data infrastructure story.</td></tr>
+          </tbody>
+        </table>
+        <p class="body-text">The editorial spine connecting all four assets is the inside-out model. Every piece of content maps back to it. The vocabulary travels with it: fan-aware, fan-led growth, audience shape, contactable fans, portable fan identity, gravitational growth, world-building. Seed these terms into every conversation, every piece of content, every press hit. When the industry starts using them and traces them back to Openstage, the category is won without naming a single competitor.</p>
+        <p class="body-text">Beyond the four flagship assets, the content calendar runs continuously from launch. Artist stories told in the artist's own voice. Short-form social content mapping the old way vs. the new way. Video tutorials for self-serve. The inside-out model explained in two minutes. Data and proof points from the roster. Every piece of content either makes the category real, makes the proof tangible, or makes the vocabulary stick.</p>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">The Campaign: Outreach Tiers</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">No PR firm. Direct outreach. Personal, specific, and earned. The story is too differentiated and too important to be handed to a firm that does not live inside it. The founding team and CCO are the best people to tell this story. They should be in the room, on the podcast, and in the inbox. The campaign is a full blitz across every tier simultaneously at launch. Not sequential. Not phased by tier. All of it activating in the same window, creating a compounding signal that makes the launch feel inevitable rather than manufactured.</p>
+        <table class="doc-table">
+          <thead><tr><th>Tier</th><th>Who</th><th>The Approach</th><th>Why It Matters</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Press</strong></td><td>Music industry journalists and writers covering the intersection of music, technology, and artist rights. Music business trade press. Music tech publications.</td><td>Pre-brief under embargo four weeks before launch. Give them the inside-out model and the Bills of Rights as the story, not the product features. The roster validates every claim before a word of copy is needed. Make it easy to write and easier to repeat.</td><td>Earned credibility with artists and managers who evaluate platforms based on industry reputation. Press coverage creates the social proof that accelerates every other tier.</td></tr>
+            <tr><td><strong>2. Podcasters</strong></td><td>Music industry podcasts. Creator economy podcasts. Artist-facing shows where the host already talks about artist ownership, platform independence, and the future of fandom.</td><td>Pitch founders and CCO directly. The inside-out model is a natural hour-long conversation. The Bills of Rights are a natural segment. Make it a conversation, not a press hit. Offer exclusives on the Bills of Rights before they publish.</td><td>Podcasts are the highest-trust environment for this message. The audience is already receptive. A single podcast appearance with the right host reaches more of the right people than a dozen press mentions.</td></tr>
+            <tr><td><strong>3. Industry voices</strong></td><td>Managers, agents, A&R, and music business educators with large followings in the artist and manager community. People whose opinion shifts decisions in the market.</td><td>Seed the inside-out model and the Bills of Rights directly and personally. Give early access before the public launch. Give them a reason to share. Their endorsement creates the most direct and credible pipeline into the target buyer.</td><td>Managers are the primary buyer and the primary influencer. When a respected manager endorses the inside-out model publicly, it does more for the sales pipeline than any ad spend.</td></tr>
+            <tr><td><strong>4. Creator influencers</strong></td><td>Artists and creators who already speak publicly about platform frustration, algorithm dependency, and the desire for direct fan connection. Platform-agnostic voices with credibility in the creator community.</td><td>The Fan Bill of Rights is the entry point. The inside-out model is the conversation. They do not need to be Openstage users to resonate with the message. The Bills of Rights are designed to be endorsed by anyone who believes in artist and fan rights.</td><td>Creator influencers reach the artist audience directly and authentically. Their frustration with the existing model is already public. Openstage gives them a framework and a flag to rally around.</td></tr>
+            <tr><td><strong>Existing roster</strong></td><td>Artists already building their world on Openstage. The proof that the inside-out model works.</td><td>Personal, direct outreach from the team. Share the Bills of Rights. Ask for a co-sign if it resonates with them genuinely. Let the endorsement be authentic or not at all. Do not manufacture advocacy. The 3.0 wave is where a more formal artist partnership and advocacy moment lives. For now, the proof is in the platform and the stories.</td><td>The existing roster is the most powerful proof point in the launch suite. A single public endorsement from an established artist carries more weight than any paid campaign. But only if it is genuine. Manufactured advocacy collapses trust faster than no advocacy at all.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">What Success Looks Like</span><span class="sub-arrow">+</span></button>
+      <div class="sub-body">
+        <p class="body-text">Success is not a single metric. It is directional movement across every layer of the funnel simultaneously. Not all signals will be directly attributable to the relaunch, but the pattern of movement across all of them is the proof that the 2.0 moment is working.</p>
+        <p class="body-text">The brand has landed when artists and managers encounter Openstage for the first time and feel like they finally found something. Not like they were sold something. That shift in the feeling of the first encounter is the most important signal of all and the hardest to measure.</p>
+        <p class="body-text">The content has landed when the inside-out model vocabulary starts showing up in conversations Openstage did not start. When journalists use the terms without attribution. When managers reference the framework in their own client conversations. When the Bills of Rights get shared by people who have never heard of Openstage.</p>
+        <p class="body-text">The campaign has landed when press coverage traces the ideas back to Openstage rather than describing the platform as a fan CRM tool. When the category framing sticks and other platforms start positioning relative to it.</p>
+        <table class="doc-table">
+          <thead><tr><th>Stage</th><th>Metric</th><th>Signal</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Awareness and sentiment</strong></td><td>Press mentions, share of voice, social sentiment, inbound brand searches.</td><td>The relaunch is generating category conversation. The vocabulary is being picked up and traced back to Openstage.</td></tr>
+            <tr><td><strong>Traffic</strong></td><td>Organic traffic, direct traffic, time on site, content page views.</td><td>The site is working as a conversion surface and content is driving qualified inbound.</td></tr>
+            <tr><td><strong>Engagement</strong></td><td>Email open and click rates, video completion rates, social engagement and thought leadership shares.</td><td>The messaging is landing and the content is useful and emotionally resonant enough to act on and share.</td></tr>
+            <tr><td><strong>Pipeline</strong></td><td>Demo requests, Artist Services inquiries, Legendary plan conversations.</td><td>The relaunch is generating commercial interest and not just awareness. The content is converting to conversations.</td></tr>
+            <tr><td><strong>Conversion</strong></td><td>New Build signups, Legendary upgrades, Artist Services engagements.</td><td>The funnel is working and awareness is converting to revenue.</td></tr>
+            <tr><td><strong>Activation</strong></td><td>PLG signup to active usage rate, onboarding completion, video tutorial completion.</td><td>New users are getting to value and the product is retaining what the marketing acquires.</td></tr>
+          </tbody>
+        </table>
+        <p class="body-text">The 2.0 relaunch succeeds when Openstage looks and feels like the product it actually is. When the brand matches the ambition. When the lock and key moment happens on first encounter and does not need to be explained. When the category is being discussed in terms Openstage defined.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+  <p>Openstage &nbsp;·&nbsp; 2.0 GTM Strategy &nbsp;·&nbsp; May 2026</p>
+</footer>
+
+<script>
+function toggleSection(expandRow) {
+  expandRow.parentElement.classList.toggle('open');
+}
+function toggleSub(btn) {
+  btn.parentElement.classList.toggle('open');
+}
+function toggleFw(header) {
+  header.parentElement.classList.toggle('open');
+}
+function toggleInline(el) {
+  el.classList.toggle('open');
+  const deep = el.nextElementSibling;
+  deep.classList.toggle('open');
+}
+</script>
+</body>
+</html>
