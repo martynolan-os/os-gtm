@@ -45,8 +45,8 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 
 /* SECTION */
 .section-block { border-bottom: 1px solid var(--border); width: 100%; }
-.section-header { display: flex; align-items: center; gap: 16px; padding: 20px 0 0; }
-.section-num { font-size: 11px; font-weight: 900; color: var(--black); background: var(--gold); padding: 4px 10px; flex-shrink: 0; letter-spacing: 0.05em; }
+.section-header { display: flex; align-items: center; gap: 16px; padding: 0; margin: 20px 0 0; }
+.section-num { font-size: 11px; font-weight: 900; color: var(--black); background: var(--gold); padding: 4px 10px; flex-shrink: 0; letter-spacing: 0.05em; align-self: center; line-height: 1; }
 .section-title { font-size: 17px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.01em; flex: 1; white-space: nowrap; }
 .section-tagline { font-size: 11px; color: var(--grey-dark); font-weight: 500; text-align: right; flex-shrink: 0; }
 
@@ -363,12 +363,12 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 .doc-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
 .doc-title { font-size: 32px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 4px; }
 .doc-sub { font-size: 13px; color: var(--body); margin-bottom: 48px; line-height: 1.6; max-width: 700px; }
-.divider { width: 100%; height: 1px; background: var(--border); margin: 48px 0; }
-.section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-.section-title { font-size: 20px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 16px; line-height: 1.2; }
-.section-
+.section-deep .divider { width: 100%; height: 1px; background: var(--border); margin: 48px 0; }
+.section-deep .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.section-deep .section-title { font-size: 20px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 16px; line-height: 1.2; }
+.section-deep .section-
 .section-body strong { color: var(--white); }
-.section { margin-bottom: 48px; }
+.section-deep .section { margin-bottom: 48px; }
 
 .problem-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); margin: 20px 0; }
 .problem-card { background: var(--card); padding: 16px 14px; font-size: 11px; color: var(--body); line-height: 1.6; }
@@ -391,7 +391,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 .op-list li::before { content: ''; position: absolute; left: 0; top: 16px; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
 
 .mbt-block { border: 1px solid var(--border); background: var(--card); margin-bottom: 2px; }
-.mbt-header { display: flex; align-items: flex-start; gap: 14px; padding: 15px 18px; cursor: pointer; user-select: none; }
+.mbt-header { display: flex; align-items: center; flex-wrap: nowrap; gap: 14px; padding: 15px 18px; cursor: pointer; user-select: none; }
 .mbt-header:hover .mbt-title { color: var(--gold); }
 .mbt-num { font-size: 10px; font-weight: 900; color: var(--black); background: var(--gold); padding: 3px 8px; flex-shrink: 0; margin-top: 1px; }
 .mbt-title { font-size: 13px; font-weight: 700; color: var(--white); flex: 1; line-height: 1.4; }
@@ -401,9 +401,9 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 .mbt-
 .mbt-block.open .mbt-
 .mbt-items { margin: 10px 0 0; padding: 0; list-style: none; }
-.mbt-items li { font-size: 12px; color: var(--body); line-height: 1.75; padding: 7px 0 7px 16px; border-bottom: 1px solid var(--border); position: relative; }
+.mbt-items li { font-size: 12px; color: var(--body); line-height: 1.75; padding: 7px 0 7px 0; border-bottom: 1px solid var(--border); list-style: none; display: flex; align-items: flex-start; gap: 10px; }
 .mbt-items li:last-child { border-bottom: none; }
-.mbt-items li::before { content: ''; position: absolute; left: 0; top: 14px; width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
+.mbt-items li::before { content: '·'; color: var(--border); font-size: 16px; flex-shrink: 0; line-height: 1.5; }
 
 /* OUTCOME TABLES */
 .outcome-block { margin-bottom: 36px; }
@@ -421,9 +421,9 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 .stream-obj-text { font-size: 10px; color: var(--body); line-height: 1.55; }
 
 .cap-list { padding: 0; list-style: none; }
-.cap-list li { font-size: 11px; color: var(--body); line-height: 1.65; padding: 6px 0 6px 14px; border-bottom: 1px solid var(--border); position: relative; }
+.cap-list li { font-size: 11px; color: var(--body); line-height: 1.65; padding: 6px 0 6px 0; border-bottom: 1px solid var(--border); list-style: none; display: flex; align-items: flex-start; gap: 10px; }
 .cap-list li:last-child { border-bottom: none; padding-bottom: 0; }
-.cap-list li::before { content: ''; position: absolute; left: 0; top: 13px; width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
+.cap-list li::before { content: '·'; color: var(--border); font-size: 16px; flex-shrink: 0; line-height: 1.4; }
 .flag { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 2px; }
 .tbd { font-size: 9px; color: var(--grey); font-style: italic; display: block; margin-top: 2px; }
 </style>
@@ -447,8 +447,8 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
   <a href="#differentiation">4. Differentiation</a>
   <a href="#brand">5. Brand</a>
   <a href="#gtm">6. GTM</a>
-  <a href="#product-strategy">7. 2.0 Product Strategy</a>
-  <a href="#relaunch">8. 2.0 Relaunch</a>
+  <a href="#product-strategy">7. Product Strategy</a>
+  <a href="#relaunch">8. Launch Strategy</a>
 </div>
 </nav>
 
@@ -1088,7 +1088,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 <div class="section-block" id="product-strategy">
   <div class="section-header">
     <span class="section-num">7</span>
-    <span class="section-title">2.0 Product Strategy</span>
+    <span class="section-title">Product Strategy</span>
     <span class="section-tagline">Why 2.0. What it is. What must be true. The work.</span>
   </div>
   <div class="section-surface">
@@ -1099,9 +1099,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
     <span class="expand-btn">+</span>
   </div>
   <div class="section-deep">
-    <div class="doc-eyebrow">Openstage Internal</div>
-<div class="doc-title">What is Openstage 2.0?</div>
-<div class="doc-sub">A company-wide reframe of how the market understands us, how artists experience us, and how we build.</div>
+    
 
 <div class="section">
   <div class="section-label">Why 2.0</div>
@@ -1332,7 +1330,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 <div class="section-block" id="relaunch">
   <div class="section-header">
     <span class="section-num">8</span>
-    <span class="section-title">The 2.0 Relaunch</span>
+    <span class="section-title">Launch Strategy</span>
     <span class="section-tagline">Early July. Hearts and minds first. Everything else follows.</span>
   </div>
   <div class="section-surface">
