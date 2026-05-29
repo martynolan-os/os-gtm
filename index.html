@@ -218,6 +218,142 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 
 /* Quote plain variant */
 .quote-plain { font-style: normal !important; font-weight: 700 !important; letter-spacing: 0.01em; }
+
+/* BEATS */
+
+
+
+
+.doc-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.doc-title { font-size: 26px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 40px; }
+
+/* BEAT GROUPS */
+.beat-group { margin-bottom: 48px; }
+
+.beat-date {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.beat-date-label { color: var(--white); }
+.beat-date-sub { font-size: 10px; font-weight: 600; color: var(--grey); letter-spacing: 0.08em; }
+
+/* ITEMS */
+.beat-items { display: flex; flex-direction: column; gap: 2px; }
+
+.beat-item {
+  display: grid;
+  grid-template-columns: 80px 220px 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.beat-item:hover { background: #1a1a1a; }
+
+.item-area {
+  padding: 12px 10px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.area-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.area-tag.product { color: var(--body); }
+.area-tag.marketing { color: var(--body); }
+.area-tag.cs { color: var(--body); }
+
+.item-name-col {
+  padding: 12px 16px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.item-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.type-badge {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  display: inline-block;
+}
+
+.type-launch { background: rgba(240,193,50,0.12); color: var(--gold); }
+.type-release { background: rgba(150,150,150,0.1); color: var(--grey); }
+
+.item-notes {
+  padding: 12px 16px;
+  font-size: 11px;
+  color: var(--body);
+  line-height: 1.65;
+  display: flex;
+  align-items: center;
+}
+
+.tier-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.tier-dot { background: var(--border); }
+
+
+
+
+/* GTM BEAT CALL-OUT */
+.gtm-beat {
+  background: rgba(240,193,50,0.04);
+  border: 1px solid rgba(240,193,50,0.2);
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  color: #cccccc;
+  line-height: 1.7;
+}
+
+.gtm-beat strong { color: var(--white); font-weight: 700; }
+.header-note {
+  font-size: 12px;
+  color: var(--body);
+  background: rgba(240,193,50,0.06);
+  border: 1px solid rgba(240,193,50,0.2);
+  padding: 12px 16px;
+  margin-bottom: 40px;
+  line-height: 1.65;
+  max-width: 700px;
+}
+.tier-dot { background: var(--border) !important; }
+.item-notes-inner { display: flex; flex-direction: column; gap: 4px; }
+.item-notes-inner .area-tag { display: block; margin-bottom: 3px; }
 </style>
 </head>
 <body>
@@ -982,273 +1118,11 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
   </div>
 </div>
 
-<!-- ── BEAT 2: JUNE 15 ── -->
-<div class="beat-group">
-  <div class="beat-date">
-    <span class="beat-date-label">June 15</span>
-    <span class="beat-date-sub">Posts launches</span>
-  </div>
-  <div class="beat-items">
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-launch">Launch</span></div>
-      <div class="item-name-col"><span class="item-name">Posts: Open Beta</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag product">Product</span><span>Full launch of the Posts product. Any content block usable in Posts: video, Spotify embeds, etc. Also available on the Fan App homepage. Rob wants this shipped ahead of 2.0.</span></div></div>
+    <div class="expand-row" onclick="toggleLaunch(this)" style="border-top:1px solid var(--border);margin-top:8px;">
+      <span class="expand-label">Launch Timeline</span>
+      <span class="expand-btn">+</span>
     </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-launch">Launch</span></div>
-      <div class="item-name-col"><span class="item-name">Posts Landing Page</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag marketing">Marketing</span><span>External-facing landing page supporting the Posts launch. Explains the capability and drives trial signups. First public page reflecting 2.0 positioning and visual language.</span></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ── BEAT 3: JUNE 22-29 ── -->
-<div class="beat-group">
-  <div class="beat-date">
-    <span class="beat-date-label">June 22 to 29</span>
-    <span class="beat-date-sub">Open platform</span>
-  </div>
-  <div class="beat-items">
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-launch">Launch</span></div>
-      <div class="item-name-col"><span class="item-name">Manager API / MCP</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag product">Product</span><span>REST API for reading and writing fan data from external tools. Webhooks for real-time event delivery. MCP server allows Claude and ChatGPT to communicate with Openstage fan data without technical knowledge of the API. Manager API and Webhooks available on all plans. MCP launches Legendary-first.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-release">Release</span></div>
-      <div class="item-name-col"><span class="item-name">Home Page Builder (Link-in-bio)</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag product">Product</span><span>Evolved fan page with homepage config, feed view (Posts), and fan profile page. Web-only. Cleaner builder experience replaces the current link-in-bio concept.</span></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ── BEAT 4: LATE JUNE / EARLY JULY TBD ── -->
-<div class="beat-group">
-  <div class="beat-date">
-    <span class="beat-date-label">Late June / TBD</span>
-    <span class="beat-date-sub">Fan membership and access surface</span>
-  </div>
-  <div class="beat-items">
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-release">Release</span></div>
-      <div class="item-name-col"><span class="item-name">Memberships Enhancement</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag product">Product</span><span>All fans become free members by default. Fan Pass auto-generated using artist branding on signup. Artist decides whether to add a paid tier. Distinction between imported fans and opted-in members becomes the basis for segmentation.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-release">Release</span></div>
-      <div class="item-name-col"><span class="item-name">Fan Pass</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag product">Product</span><span>Fans can add Fan Pass to Apple and Google Wallet. Enables physical scan use at shows. Push notifications via wallet pass as a mobile channel. Currently scoping Apple guidelines and capabilities.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-launch">Launch</span></div>
-      <div class="item-name-col"><span class="item-name">Landing Pages 2.0</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag product">Product</span><span>Rebuilt landing page templates aligned with the 2.0 brand identity and visual language. Fan-facing surfaces updated ahead of the full relaunch.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-launch">Launch</span></div>
-      <div class="item-name-col"><span class="item-name">Polls Enhancements</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag product">Product</span><span>Dedicated Polls Manager. Build polls outside of post creation, view results, reuse polls across posts and landing pages.</span></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ── BEAT 5: JUNE 25 / EARLY JULY: 2.0 ── -->
-<div class="beat-group">
-  <div class="beat-date">
-    <span class="beat-date-label">June 25 / Early July</span>
-    <span class="beat-date-sub">Full 2.0 relaunch</span>
-  </div>
-  <div class="beat-items">
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-launch">Launch</span></div>
-      <div class="item-name-col"><span class="item-name">Openstage 2.0</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag product">Product</span><span>Full relaunch. Fan App, Memberships, Fan Pass, Posts, and pricing converge. Overarching strategic context for all brand and GTM work. US westward expansion begins.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-launch">Launch</span></div>
-      <div class="item-name-col"><span class="item-name">2.0 Homepage</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag marketing">Marketing</span><span>New external-facing site aligned to 2.0 positioning. Build your world. Primary conversion surface for every channel at launch.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-launch">Launch</span></div>
-      <div class="item-name-col"><span class="item-name">Pricing: New $49 Entry</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag product">Product</span><span>New entry-level pricing tier at $49. Expands the addressable market for self-serve. PLG motion activates alongside this.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-release">Release</span></div>
-      <div class="item-name-col"><span class="item-name">Pricing Page</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag marketing">Marketing</span><span>Rebuilt pricing page reflecting the new $49 entry tier and updated plan architecture. Fan-count slider. Self-serve conversion surface.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-launch">Launch</span></div>
-      <div class="item-name-col"><span class="item-name">Artist Services Landing Page</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag marketing">Marketing</span><span>External-facing page for Onboarding, Audience Development, and Campaign Management packages. Entry point for Artist Services inbound and direct sales conversations.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-release">Release</span></div>
-      <div class="item-name-col"><span class="item-name">Revised Help Center</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag cs">CS</span><span>Full knowledge base overhaul aligned to 2.0. Why articles, how articles, and case study articles. Taxonomy redesigned for Intercom and Finn AI support quality.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-release">Release</span></div>
-      <div class="item-name-col"><span class="item-name">Learning Academy</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag cs">CS</span><span>Video tutorial library mapped to jobs to be done. Flattens self-serve learning curve. Supports Artist Services onboarding. Lives on site and YouTube.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-release">Release</span></div>
-      <div class="item-name-col"><span class="item-name">Updated Lifecycle Flows</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag marketing">Marketing</span><span>Email lifecycle and CRM flows updated to reflect new product capabilities and the updated fan journey. Onboarding sequence rebuilt around 2.0 aha moments.</span></div></div>
-    </div>
-    <div class="beat-item">
-      <div class="item-area"><span class="type-badge type-release">Release</span></div>
-      <div class="item-name-col"><span class="item-name">Trust and Safety Page</span></div>
-      <div class="item-notes"><div class="item-notes-inner"><span class="area-tag marketing">Marketing</span><span>External page covering trust and safety positioning. Supports enterprise and label conversations where data governance is part of platform evaluation.</span></div></div>
-    </div>
-  </div>
-</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sub-section">
-      <button class="sub-toggle" onclick="toggleSub(this)"><span class="sub-title">Launch Timeline</span><span class="sub-arrow">+</span></button>
-      <div class="sub-body">
-        <style>
-
-
-
-
-.doc-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-.doc-title { font-size: 26px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 40px; }
-
-/* BEAT GROUPS */
-.beat-group { margin-bottom: 48px; }
-
-.beat-date {
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.beat-date-label { color: var(--white); }
-.beat-date-sub { font-size: 10px; font-weight: 600; color: var(--grey); letter-spacing: 0.08em; }
-
-/* ITEMS */
-.beat-items { display: flex; flex-direction: column; gap: 2px; }
-
-.beat-item {
-  display: grid;
-  grid-template-columns: 80px 220px 1fr;
-  gap: 0;
-  border: 1px solid var(--border);
-  background: var(--card);
-}
-
-.beat-item:hover { background: #1a1a1a; }
-
-.item-area {
-  padding: 12px 10px;
-  border-right: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.area-tag {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.area-tag.product { color: var(--body); }
-.area-tag.marketing { color: var(--body); }
-.area-tag.cs { color: var(--body); }
-
-.item-name-col {
-  padding: 12px 16px;
-  border-right: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.item-name {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.3;
-}
-
-.type-badge {
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 2px 6px;
-  display: inline-block;
-}
-
-.type-launch { background: rgba(240,193,50,0.12); color: var(--gold); }
-.type-release { background: rgba(150,150,150,0.1); color: var(--grey); }
-
-.item-notes {
-  padding: 12px 16px;
-  font-size: 11px;
-  color: var(--body);
-  line-height: 1.65;
-  display: flex;
-  align-items: center;
-}
-
-.tier-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  margin-right: 8px;
-  flex-shrink: 0;
-}
-
-.tier-dot { background: var(--border); }
-
-
-
-
-/* GTM BEAT CALL-OUT */
-.gtm-beat {
-  background: rgba(240,193,50,0.04);
-  border: 1px solid rgba(240,193,50,0.2);
-  padding: 14px 18px;
-  margin-bottom: 10px;
-  font-size: 11px;
-  color: #cccccc;
-  line-height: 1.7;
-}
-
-.gtm-beat strong { color: var(--white); font-weight: 700; }
-.header-note {
-  font-size: 12px;
-  color: var(--body);
-  background: rgba(240,193,50,0.06);
-  border: 1px solid rgba(240,193,50,0.2);
-  padding: 12px 16px;
-  margin-bottom: 40px;
-  line-height: 1.65;
-  max-width: 700px;
-}
-.tier-dot { background: var(--border) !important; }
-.item-notes-inner { display: flex; flex-direction: column; gap: 4px; }
-.item-notes-inner .area-tag { display: block; margin-bottom: 3px; }
-        </style>
+<div class="inline-deep" id="launch-timeline-deep" style="display:none;">
         <div style="margin: 8px 0;">
 <div class="header-note">Need to determine release timeline and GTM beats leading up to 2.0 impact moment for launch in earnest.</div>
 
@@ -1387,7 +1261,6 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
   </div>
 </div>
         </div>
-      </div>
     </div>
 
   </div>
@@ -1411,6 +1284,11 @@ function toggleInline(el) {
   el.classList.toggle('open');
   const deep = el.nextElementSibling;
   deep.classList.toggle('open');
+}
+function toggleLaunch(el) {
+  el.classList.toggle('open');
+  var d = document.getElementById('launch-timeline-deep');
+  d.style.display = d.style.display === 'none' ? 'block' : 'none';
 }
 </script>
 </body>
