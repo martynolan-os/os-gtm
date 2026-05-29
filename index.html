@@ -354,6 +354,78 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 .tier-dot { background: var(--border) !important; }
 .item-notes-inner { display: flex; flex-direction: column; gap: 4px; }
 .item-notes-inner .area-tag { display: block; margin-bottom: 3px; }
+
+/* 2.0 PRODUCT STRATEGY */
+
+
+
+
+.doc-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.doc-title { font-size: 32px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 4px; }
+.doc-sub { font-size: 13px; color: var(--body); margin-bottom: 48px; line-height: 1.6; max-width: 700px; }
+.divider { width: 100%; height: 1px; background: var(--border); margin: 48px 0; }
+.section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.section-title { font-size: 20px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 16px; line-height: 1.2; }
+.section-
+.section-body strong { color: var(--white); }
+.section { margin-bottom: 48px; }
+
+.problem-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); margin: 20px 0; }
+.problem-card { background: var(--card); padding: 16px 14px; font-size: 11px; color: var(--body); line-height: 1.6; }
+
+.before-after { display: grid; grid-template-columns: 1fr 60px 1fr; align-items: center; margin: 24px 0; max-width: 700px; }
+.ba-box { border: 1px solid var(--border); padding: 28px 24px; text-align: center; background: var(--card); }
+.ba-box.after { background: rgba(240,193,50,0.06); border-color: rgba(240,193,50,0.3); }
+.ba-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); margin-bottom: 8px; }
+.ba-text { font-size: 16px; font-weight: 700; color: var(--white); line-height: 1.3; }
+.ba-arrow { text-align: center; font-size: 22px; color: var(--gold); }
+
+.mmp-box { background: rgba(240,193,50,0.05); border: 1px solid rgba(240,193,50,0.25); padding: 22px 24px; margin: 16px 0; max-width: 820px; }
+.mmp-box p { font-size: 13px; color: var(--body); line-height: 1.8; margin-bottom: 10px; }
+.mmp-box p:last-child { margin-bottom: 0; }
+.mmp-box p strong { color: var(--white); }
+
+.op-list { margin: 8px 0 16px; padding: 0; list-style: none; max-width: 820px; }
+.op-list li { font-size: 13px; color: var(--body); line-height: 1.75; padding: 9px 0 9px 18px; border-bottom: 1px solid var(--border); position: relative; }
+.op-list li:last-child { border-bottom: none; }
+.op-list li::before { content: ''; position: absolute; left: 0; top: 16px; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+.mbt-block { border: 1px solid var(--border); background: var(--card); margin-bottom: 2px; }
+.mbt-header { display: flex; align-items: flex-start; gap: 14px; padding: 15px 18px; cursor: pointer; user-select: none; }
+.mbt-header:hover .mbt-title { color: var(--gold); }
+.mbt-num { font-size: 10px; font-weight: 900; color: var(--black); background: var(--gold); padding: 3px 8px; flex-shrink: 0; margin-top: 1px; }
+.mbt-title { font-size: 13px; font-weight: 700; color: var(--white); flex: 1; line-height: 1.4; }
+.mbt-arrow { font-size: 12px; color: var(--grey); flex-shrink: 0; transition: transform 0.2s; }
+.mbt-block.open .mbt-arrow { transform: rotate(45deg); color: var(--gold); }
+.mbt-block.open .mbt-title { color: var(--gold); }
+.mbt-
+.mbt-block.open .mbt-
+.mbt-items { margin: 10px 0 0; padding: 0; list-style: none; }
+.mbt-items li { font-size: 12px; color: var(--body); line-height: 1.75; padding: 7px 0 7px 16px; border-bottom: 1px solid var(--border); position: relative; }
+.mbt-items li:last-child { border-bottom: none; }
+.mbt-items li::before { content: ''; position: absolute; left: 0; top: 14px; width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
+
+/* OUTCOME TABLES */
+.outcome-block { margin-bottom: 36px; }
+.outcome-header { background: rgba(240,193,50,0.08); border: 1px solid rgba(240,193,50,0.25); border-bottom: 2px solid var(--gold); padding: 14px 18px; margin-bottom: 0; }
+.outcome-header-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.outcome-header-title { font-size: 15px; font-weight: 900; color: var(--white); line-height: 1.3; }
+
+.outcome-table { width: 100%; border-collapse: collapse; }
+.outcome-table th { background: #0d0d0d; padding: 9px 14px; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); text-align: left; border: 1px solid var(--border); }
+.outcome-table td { padding: 12px 14px; border: 1px solid var(--border); vertical-align: top; }
+.outcome-table td:first-child { background: var(--card); width: 220px; }
+.outcome-table td:last-child { background: var(--dark); }
+
+.stream-name { font-size: 12px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+.stream-obj-text { font-size: 10px; color: var(--body); line-height: 1.55; }
+
+.cap-list { padding: 0; list-style: none; }
+.cap-list li { font-size: 11px; color: var(--body); line-height: 1.65; padding: 6px 0 6px 14px; border-bottom: 1px solid var(--border); position: relative; }
+.cap-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.cap-list li::before { content: ''; position: absolute; left: 0; top: 13px; width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
+.flag { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 2px; }
+.tbd { font-size: 9px; color: var(--grey); font-style: italic; display: block; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -375,7 +447,8 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
   <a href="#differentiation">4. Differentiation</a>
   <a href="#brand">5. Brand</a>
   <a href="#gtm">6. GTM</a>
-  <a href="#relaunch">7. 2.0 Relaunch</a>
+  <a href="#product-strategy">7. 2.0 Product Strategy</a>
+  <a href="#relaunch">8. 2.0 Relaunch</a>
 </div>
 </nav>
 
@@ -1011,10 +1084,254 @@ body { font-family: 'Montserrat', sans-serif; background: var(--black); color: v
 
       </div>
     </div>
-<!-- 07 RELAUNCH -->
-<div class="section-block" id="relaunch">
+<!-- 07 PRODUCT STRATEGY -->
+<div class="section-block" id="product-strategy">
   <div class="section-header">
     <span class="section-num">7</span>
+    <span class="section-title">2.0 Product Strategy</span>
+    <span class="section-tagline">Why 2.0. What it is. What must be true. The work.</span>
+  </div>
+  <div class="section-surface">
+    <p class="surface-text">Openstage 2.0 is a company-wide reframe of how the market understands us, how artists experience us, and how we build. It's built around a single operating model: grow from the inside out. This section contains the internal product thesis that backs up the GTM strategy.</p>
+  </div>
+  <div class="expand-row" onclick="toggleSection(this)">
+    <span class="expand-label">Why 2.0, the goal, the definition, what must be true, and the work organized by outcome</span>
+    <span class="expand-btn">+</span>
+  </div>
+  <div class="section-deep">
+    <div class="doc-eyebrow">Openstage Internal</div>
+<div class="doc-title">What is Openstage 2.0?</div>
+<div class="doc-sub">A company-wide reframe of how the market understands us, how artists experience us, and how we build.</div>
+
+<div class="section">
+  <div class="section-label">Why 2.0</div>
+  <div class="section-title">Openstage is doing a poor job directing artists to success.</div>
+  <div class="problem-grid">
+    <div class="problem-card">Unclear what the platform wants me to do</div>
+    <div class="problem-card">Unclear what's important. No obvious priority in capabilities.</div>
+    <div class="problem-card">Everything requires manual work and connecting the pieces together.</div>
+    <div class="problem-card">Feels like a collection of tools, not a cohesive platform</div>
+    <div class="problem-card">Brand and collateral don't reinforce the product experience</div>
+    <div class="problem-card">No repeatable signals of progression or success</div>
+    <div class="problem-card">Hard to find my most used or relevant items</div>
+    <div class="problem-card">Disconnected from artist jobs-to-be-done</div>
+    <div class="problem-card">Overwhelming. Too many things, no clear entry point</div>
+    <div class="problem-card">Inconsistent UX patterns across features</div>
+  </div>
+  <div style="margin-top:20px;">
+    <div class="section-label" style="margin-bottom:10px;">Artists need to</div>
+    <ul class="op-list">
+      <li>Have confidence in Openstage</li>
+      <li>Know exactly how it transforms their business</li>
+      <li>Know how to go about using it</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">The Goal</div>
+  <div class="section-title">A collection of tools becomes a product with a cohesive point of view.</div>
+  <p class="section-body">2.0 is how we close that gap, taking everything we've learned about what works and building a product that makes success the obvious path.</p>
+  <div class="before-after">
+    <div class="ba-box"><div class="ba-label">Today</div><div class="ba-text">A collection of tools</div></div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-box after"><div class="ba-label">2.0</div><div class="ba-text">A product with a cohesive point of view</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">The Definition</div>
+  <div class="section-title">Openstage 2.0 is a company-wide reframe.</div>
+  <p class="section-body">Of how the market understands us, how artists experience us, and how we build. It's built around a single operating model: <strong>grow from the inside out.</strong> 2.0 is the product, the story, and the infrastructure that makes that model real and consistent across every surface.</p>
+  <div class="section-label" style="margin-bottom:10px;margin-top:24px;">The operating model</div>
+  <ul class="op-list">
+    <li>Build a world that reflects who they are</li>
+    <li>Bring fans into that world whenever they capture attention</li>
+    <li>Publish and interact directly with their audience</li>
+    <li>Personalize experiences and reward fans based on fan behaviour</li>
+    <li>Launch new music, tours, and merch by starting with their fans first and sharing outwards</li>
+  </ul>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Our Target</div>
+  <div class="section-title">Launch Minimum Marketable Product by July 2026.</div>
+  <div class="mmp-box">
+    <p><strong>A Minimum Marketable Product</strong> is the smallest version of 2.0 that coherently communicates the new model, gives artists the foundation they need to act on it, and earns the right to build everything else on top.</p>
+    <p>We are not trying to build everything. We are trying to ship the absolute minimum scope that gets this new foundation into the world, then build on top of it.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">What Must Be True</div>
+  <div class="section-title">Seven conditions for a successful 2.0 launch.</div>
+  <div class="mbt-block open">
+    <div class="mbt-header" onclick="this.parentElement.classList.toggle('open')"><span class="mbt-num">1</span><span class="mbt-title">I understand what Openstage unlocks and I trust it</span><span class="mbt-arrow">+</span></div>
+    <div class="mbt-body"><ul class="mbt-items"><li>The brand looks and feels like it was built for serious artists</li><li>The inside-out model is immediately legible</li><li>The story is consistent from marketing to onboarding to product to CS</li><li>The product looks and feels like one thing</li></ul></div>
+  </div>
+  <div class="mbt-block">
+    <div class="mbt-header" onclick="this.parentElement.classList.toggle('open')"><span class="mbt-num">2</span><span class="mbt-title">I'm building my world</span><span class="mbt-arrow">+</span></div>
+    <div class="mbt-body"><ul class="mbt-items"><li>I'm creating a fan app</li><li>I can make it look and feel like me</li><li>My posts and pages are all hosted here in some way</li><li>They are fan-aware, interactive, and make more fans want to join</li></ul></div>
+  </div>
+  <div class="mbt-block">
+    <div class="mbt-header" onclick="this.parentElement.classList.toggle('open')"><span class="mbt-num">3</span><span class="mbt-title">Fans join, not just follow</span><span class="mbt-arrow">+</span></div>
+    <div class="mbt-body"><ul class="mbt-items"><li>Each fan joins as a member</li><li>With a profile that lives inside my app</li><li>Membership comes with a pass, a tangible artifact of belonging</li><li>Fans can upgrade to paid membership levels</li></ul></div>
+  </div>
+  <div class="mbt-block">
+    <div class="mbt-header" onclick="this.parentElement.classList.toggle('open')"><span class="mbt-num">4</span><span class="mbt-title">I bring fans into it</span><span class="mbt-arrow">+</span></div>
+    <div class="mbt-body"><ul class="mbt-items"><li>Turning attention into real relationships</li><li>Capturing fan data and identity</li><li>Onboarding fans optimally</li><li>Consolidating data from around my world</li><li>Fans are known, reachable, and connected to my ecosystem</li></ul></div>
+  </div>
+  <div class="mbt-block">
+    <div class="mbt-header" onclick="this.parentElement.classList.toggle('open')"><span class="mbt-num">5</span><span class="mbt-title">I superserve my core</span><span class="mbt-arrow">+</span></div>
+    <div class="mbt-body"><ul class="mbt-items"><li>Communicating and launching in fan-first ways that are fan-aware</li><li>Surface the right fans</li><li>Reward the ones who've earned it</li><li>Every moment is a hook back into the world and pulls new fans in</li></ul></div>
+  </div>
+  <div class="mbt-block">
+    <div class="mbt-header" onclick="this.parentElement.classList.toggle('open')"><span class="mbt-num">6</span><span class="mbt-title">I can see and act on my fan data</span><span class="mbt-arrow">+</span></div>
+    <div class="mbt-body"><ul class="mbt-items"><li>I can see the overall health and growth of my fanbase</li><li>Identify my top fans</li><li>See how fans are progressing over time</li><li>Use that to personalize, target, and reward the right people</li></ul></div>
+  </div>
+  <div class="mbt-block">
+    <div class="mbt-header" onclick="this.parentElement.classList.toggle('open')"><span class="mbt-num">7</span><span class="mbt-title">I know what's important and what to do next</span><span class="mbt-arrow">+</span></div>
+    <div class="mbt-body"><ul class="mbt-items"><li>The most important actions and tools are surfaced</li><li>The interface guides me to my next best action</li><li>Campaigns are tied to my real jobs</li><li>The platform works as a connected whole, not a collection of capabilities</li></ul></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">The Work</div>
+  <div class="section-title">What ships for 2.0, organized by artist outcome.</div>
+
+  <div class="outcome-block">
+    <div class="outcome-header"><div class="outcome-header-label">Outcome 1</div><div class="outcome-header-title">I have confidence in Openstage and understand the story</div></div>
+    <table class="outcome-table">
+      <thead><tr><th>Workstream</th><th>What must ship</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="stream-name">Brand Refresh</div><div class="stream-obj-text">Deliver the visual identity, positioning, and messaging that makes artists immediately understand what Openstage is and trust it.</div></td>
+          <td><ul class="cap-list"><li>New logo and wordmark finalized</li><li>Color and typography system defined</li><li>Brand guidelines documented and distributed</li><li>Website and marketing reflect the new brand</li><li>Positioning and messaging framework defined and signed off</li><li>Story consistent from marketing to onboarding to product to CS</li><li>Sales and CS teams can tell the story confidently</li></ul></td>
+        </tr>
+        <tr>
+          <td><div class="stream-name">Design System</div><div class="stream-obj-text">Build the shared system that lets product and development move faster, and makes the product feel like one coherent thing to artists.</div></td>
+          <td><ul class="cap-list"><li>Core component library built and in use</li><li>Applied across product surfaces</li><li>Product looks and feels like the new brand</li><li>One unified design system used by both artists and manager 2.0</li></ul></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="outcome-block">
+    <div class="outcome-header"><div class="outcome-header-label">Outcome 2</div><div class="outcome-header-title">I know what's important and what to do next</div></div>
+    <table class="outcome-table">
+      <thead><tr><th>Workstream</th><th>What must ship</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="stream-name">Information Architecture</div><div class="stream-obj-text">Reorganize manager so it's clear what it means to be a good user.</div></td>
+          <td><ul class="cap-list"><li>Navigation restructured around artist jobs, not features</li><li>Key tools and campaigns surfaced as product</li><li>UX patterns consistent across features</li><li>Artists land and immediately know where to go</li><li>Product feels like one thing, not a collection of tools</li></ul></td>
+        </tr>
+        <tr>
+          <td><div class="stream-name">Refactor Manager</div><div class="stream-obj-text">Technical foundation for 2.0. Target date: May 20.</div></td>
+          <td><ul class="cap-list"><li>Artist one-store <span class="tbd">In progress, approx 5 more days</span></li><li>Auth-store <span class="tbd">Approx 5 days</span></li><li>Landing page one-store <span class="tbd">Approx 8 days</span></li><li>Other helpers, services, components <span class="tbd">Move to TS / 2.0 / Composition API, approx 7 days</span></li><li>Item-to-pages <span class="tbd">Approx 5 days</span></li><li>Update nodes and plugins to new versions <span class="tbd">Approx 2 days each</span></li><li>Unify form validations across the app <span class="tbd">Approx 5 days</span></li></ul></td>
+        </tr>
+        <tr>
+          <td><div class="stream-name">New Artist Onboarding</div><div class="stream-obj-text">Get new artists set up for success as fast as possible.</div></td>
+          <td><ul class="cap-list"><li>Settings overhauled</li><li>Any significant dashboard changes</li><li>Contextual next steps and guidance surfaced</li></ul></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="outcome-block">
+    <div class="outcome-header"><div class="outcome-header-label">Outcome 3</div><div class="outcome-header-title">I'm building a fan app</div></div>
+    <table class="outcome-table">
+      <thead><tr><th>Workstream</th><th>What must ship</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="stream-name">Fan App Builder</div><div class="stream-obj-text">Give artists an owned front door to their D2F world that is fan-aware and built to get fans to go down the rabbit hole.</div></td>
+          <td><ul class="cap-list"><li>Artists understand they are building a fan app</li><li>Artists can configure and brand their fan app in under 15 minutes</li><li>Artists can build and customize their home page with blocks</li><li>Artists can preview exactly what their fans see</li><li>Fan App 1.0 migration path is clear for all existing artists</li><li>Fan App 1 is deprecated</li><li>Existing exclusive content archive is still accessible through new interface</li><li>Artists can add tracking pixels across every page <span class="flag">Don't call them pixels</span></li></ul></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="outcome-block">
+    <div class="outcome-header"><div class="outcome-header-label">Outcome 4</div><div class="outcome-header-title">Every fan joins as a member</div></div>
+    <table class="outcome-table">
+      <thead><tr><th>Workstream</th><th>What must ship</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="stream-name">Memberships and Fan Pass</div><div class="stream-obj-text">Turn every fan into a member, with a profile, a pass, and a clear path to paid.</div></td>
+          <td><ul class="cap-list"><li>All fans start as free members</li><li>All fans receive a membership pass that lives in their profile and wallet</li><li>Artists can create and offer paid membership tiers</li><li>Artists can design fan passes</li><li>Upgrade paths are served across the fan journey</li><li>Fans know they have a pass and should do something with it</li><li>Issue a Fan Pass to every fan as a portable identity and reward mechanism</li><li>Memberships dashboard</li><li>Membership upgrade flows optimized</li><li>Push notification management <span class="tbd">Push new passes? Push notifications?</span></li></ul></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="outcome-block">
+    <div class="outcome-header"><div class="outcome-header-label">Outcome 5</div><div class="outcome-header-title">I convert attention into fan identity</div></div>
+    <table class="outcome-table">
+      <thead><tr><th>Workstream</th><th>What must ship</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="stream-name">Landing Pages 2.0</div><div class="stream-obj-text">Give artists goal-led landing pages that turn attention into known fans, with verification, messaging, and onboarding ready to plug in.</div></td>
+          <td><ul class="cap-list"><li>An artist can pick a goal, build a page, set a follow-up, and ship without leaving the builder</li><li>A fan hits the page, understands what they're being asked, completes the flow, and lands somewhere meaningful</li><li>Every artist on LP 1.0 has a clear path forward and their links don't break</li><li>Verification available on any landing page, not just ticket unlocks</li><li>Returning fans recognized and skip what's already on file</li><li>Closed campaign fallback behavior handled</li><li>Global onboarding flow</li><li>Sign-up API</li></ul></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="outcome-block">
+    <div class="outcome-header"><div class="outcome-header-label">Outcome 6</div><div class="outcome-header-title">I superserve my core with fan-first comms and launches</div></div>
+    <table class="outcome-table">
+      <thead><tr><th>Workstream</th><th>What must ship</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="stream-name">Posts</div><div class="stream-obj-text">Turn one-way emails into interactive, fan-aware experiences that deepen engagement with existing fans and draw new ones into the artist's world.</div></td>
+          <td><ul class="cap-list"><li>Posts replaces Broadcasts as the primary communication surface for all artists</li><li>All subscriber content migrated to Posts</li><li>The create flow is clear enough to get it right the first time</li><li>Post settings are simple and obvious</li><li>Broadcasts deprecated for legacy users</li></ul></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="outcome-block">
+    <div class="outcome-header"><div class="outcome-header-label">Outcome 7</div><div class="outcome-header-title">I use my data to achieve my goals</div></div>
+    <table class="outcome-table">
+      <thead><tr><th>Workstream</th><th>What must ship</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="stream-name">Rosa</div><div class="stream-obj-text">Make it easy for artists to get insights and start campaigns from their data through natural language.</div></td>
+          <td><ul class="cap-list"><li>Natural language insights. Ask a question, get an answer from your fan data. <span class="tbd">Alpha, timing TBD</span></li></ul></td>
+        </tr>
+        <tr>
+          <td><div class="stream-name">XP</div><div class="stream-obj-text">Give artists a configurable fan progression system so they can define what makes a valuable fan, and power smarter rewards and targeting.</div></td>
+          <td><ul class="cap-list"><li>Artists can define what makes a valuable fan</li><li>Fan progression powers smarter rewards and targeting</li></ul></td>
+        </tr>
+        <tr>
+          <td><div class="stream-name">Tour Launches</div><div class="stream-obj-text">Launch tour pre-sale registration and code delivery fully automated for artists of all sizes.</div></td>
+          <td><ul class="cap-list"><li>Pre-sale registration and code delivery fully automated for artists of all sizes</li></ul></td>
+        </tr>
+        <tr>
+          <td><div class="stream-name">Understand artist behavior</div><div class="stream-obj-text">Surface what behavior leads to success so artists can replicate it.</div></td>
+          <td><ul class="cap-list"><li><span class="tbd">Objective TBD</span></li></ul></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+  </div>
+</div>
+
+<!-- 08 RELAUNCH -->
+<div class="section-block" id="relaunch">
+  <div class="section-header">
+    <span class="section-num">8</span>
     <span class="section-title">The 2.0 Relaunch</span>
     <span class="section-tagline">Early July. Hearts and minds first. Everything else follows.</span>
   </div>
